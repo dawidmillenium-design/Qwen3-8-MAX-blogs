@@ -1,151 +1,245 @@
-<!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>THE CONTROL FILES — 22 dispatches on power, space & perception</title>
-<meta name="description" content="A 22-part blog split from one cursed HTML file: coercive systems, environmental gaslighting, liminal spaces. Interconnected by contextual links, negative-color hover effects and animated SVG icons.">
-<link rel="stylesheet" href="style.css">
-<style>
-.grid{display:grid;gap:1.4rem;grid-template-columns:repeat(auto-fill,minmax(min(420px,100%),1fr));container-type:inline-size}
-.card{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);padding:1.3rem 1.4rem;
-backdrop-filter:blur(18px) saturate(1.5);position:relative;isolation:isolate;transition:.4s cubic-bezier(.2,.9,.2,1)}
-.card::before{content:"";position:absolute;inset:-1px;z-index:-1;border-radius:inherit;opacity:0;transition:.5s;
-background:conic-gradient(from var(--ang),var(--a),var(--b),var(--c),var(--a));filter:blur(60px);mix-blend-mode:plus-lighter}
-.card:hover::before{opacity:.5}
-.card:hover{transform:translateY(-4px) scale(1.015);border-color:color-mix(in oklab,var(--c) 60%,var(--line))}
-.card h3{margin:.4rem 0 .5rem;font-family:var(--fd);font-size:1.15rem;line-height:1.2;text-wrap:balance}
-.card p{color:var(--muted);font-size:.92rem;margin:0 0 .7rem}
-.ctx{font-family:var(--fd);font-size:.8rem;display:flex;flex-wrap:wrap;gap:.5rem;align-items:center;color:var(--muted)}
-.ctx strong{text-transform:uppercase;letter-spacing:.08em;font-size:.7rem}
-.hero{padding:clamp(2rem,7vw,5rem) 0 1.5rem;text-align:center}
-.hero h1{font-size:clamp(2.4rem,7vw,5rem);margin:0;font-family:var(--fd);letter-spacing:-.02em;
-background:linear-gradient(100deg,var(--a),var(--b) 45%,var(--c));-webkit-background-clip:text;background-clip:text;color:transparent}
-.hero p{color:var(--muted);max-width:60ch;margin:1rem auto;font-family:var(--fd)}
-.stats{display:flex;gap:1.2rem;justify-content:center;flex-wrap:wrap;font-family:var(--fd);font-size:.85rem;color:var(--muted)}
-.stats b{color:var(--ink)}
-</style></head>
-<body><div class="progress"></div><i class="blob b1"></i><i class="blob b2"></i><i class="blob b3"></i><div class="grain"></div>
-<header class="site"><a class="brand" href="index.html"><svg viewBox="0 0 24 24"><path class="draw" d="M12 2 3 7l9 5 9-5-9-5zM3 12l9 5 9-5M3 17l9 5 9-5"/></svg><span>THE CONTROL FILES</span></a>
-<span style="margin-left:auto" class="meta">22 dispatches · hover any link to see it go <span class="negchip">negative</span></span></header>
-<main>
-<div style="grid-column:1/-1">
-<section class="hero"><h1>The Control Files</h1>
-<p>One cursed HTML archive, split into twenty-two interconnected dispatches on coercive systems, environmental gaslighting, liminal architecture and digital power. Every article links to its semantic neighbours.</p>
-<div class="stats"><span><b>22</b> files</span><span><b>88</b> contextual rail links</span><span><b>22</b> in-body contextual links</span><span><b>13</b> animated SVG icon rigs</span></div></section>
-<section class="grid"><article class="card">
-  <div class="meta"><span class="badge"><svg viewBox="0 0 24 24"><rect class="float" x="9" y="3" width="6" height="11" rx="3"/><path class="draw" d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg> Language &amp; Culture</span><span>10 min · #01</span></div>
-  <h3><a class="xlink" href="post-01.html">Do You Want to Go to &quot;Ele Hand&quot;? The Thai English Accent, Explained Through a Bangkok Love Story</a></h3>
-  <p>A love story, a language lesson, and everything you need to know about the Thai English accent.…</p>
-  <div class="ctx"><strong>Context links →</strong> <a class="xlink" href="post-02.html">Why Venues Ban Cameras – And Why Enfor…</a><a class="xlink" href="post-04.html">When Elevators Glitch Repeatedly, It's…</a><a class="xlink" href="post-06.html">"Under Construction" Isn't a Status — …</a></div>
-</article><article class="card">
-  <div class="meta"><span class="badge"><svg viewBox="0 0 24 24"><path class="draw" d="M2 12s3.5-6 10-6 10 6 10 6-3.5 6-10 6S2 12 2 12z"/><circle class="pulse" cx="12" cy="12" r="2.6"/></svg> Coercive Systems</span><span>6 min · #02</span></div>
-  <h3><a class="xlink" href="post-02.html">Why Venues Ban Cameras – And Why Enforcement Feels So Personal</a></h3>
-  <p>Why do venues ban cameras — and why does enforcement feel so personal?…</p>
-  <div class="ctx"><strong>Context links →</strong> <a class="xlink" href="post-07.html">"White Glove Security" Isn't Premium P…</a><a class="xlink" href="post-04.html">When Elevators Glitch Repeatedly, It's…</a><a class="xlink" href="post-08.html">Constant Drilling Upstairs Isn't Just …</a></div>
-</article><article class="card">
-  <div class="meta"><span class="badge"><svg viewBox="0 0 24 24"><path class="dash" d="M2 9a15 15 0 0 1 20 0M5.5 12.5a10 10 0 0 1 13 0M9 16a5 5 0 0 1 6 0"/><circle class="blink" cx="12" cy="19.5" r="1.2"/></svg> Digital Power</span><span>4 min · #03</span></div>
-  <h3><a class="xlink" href="post-03.html">Confluence&#x27;s &quot;Add Content&quot; Controls Aren&#x27;t Just a Feature — They&#x27;re an Architecture of Organizational Power</a></h3>
-  <p>Confluence&#x27;s &quot;Add Content&quot; controls aren&#x27;t just a feature — they&#x27;re an architecture of organizational power.…</p>
-  <div class="ctx"><strong>Context links →</strong> <a class="xlink" href="post-07.html">"White Glove Security" Isn't Premium P…</a><a class="xlink" href="post-04.html">When Elevators Glitch Repeatedly, It's…</a><a class="xlink" href="post-02.html">Why Venues Ban Cameras – And Why Enfor…</a></div>
-</article><article class="card">
-  <div class="meta"><span class="badge"><svg viewBox="0 0 24 24"><g class="spin" style="transform-origin:12px 12px"><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M19.1 4.9L17 7M7 17l-2.1 2.1"/><circle cx="12" cy="12" r="4.2"/></g></svg> Environmental Gaslighting</span><span>5 min · #04</span></div>
-  <h3><a class="xlink" href="post-04.html">When Elevators Glitch Repeatedly, It&#x27;s Not Just Maintenance — It&#x27;s Environmental Control</a></h3>
-  <p>When elevators glitch repeatedly, it&#x27;s not just a maintenance problem — it&#x27;s an environmental control tactic.…</p>
-  <div class="ctx"><strong>Context links →</strong> <a class="xlink" href="post-10.html">Black Residue in Your AC Isn't Just Di…</a><a class="xlink" href="post-08.html">Constant Drilling Upstairs Isn't Just …</a><a class="xlink" href="post-05.html">When You Press DOWN and the Lift Goes …</a></div>
-</article><article class="card">
-  <div class="meta"><span class="badge"><svg viewBox="0 0 24 24"><g class="spin" style="transform-origin:12px 12px"><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M19.1 4.9L17 7M7 17l-2.1 2.1"/><circle cx="12" cy="12" r="4.2"/></g></svg> Environmental Gaslighting</span><span>5 min · #05</span></div>
-  <h3><a class="xlink" href="post-05.html">When You Press DOWN and the Lift Goes UP, It&#x27;s Not Just a Wiring Fault — It&#x27;s Embodied Gaslighting</a></h3>
-  <p>When you press DOWN and the lift goes UP, it&#x27;s not just a wiring fault — it&#x27;s embodied gaslighting.…</p>
-  <div class="ctx"><strong>Context links →</strong> <a class="xlink" href="post-04.html">When Elevators Glitch Repeatedly, It's…</a><a class="xlink" href="post-10.html">Black Residue in Your AC Isn't Just Di…</a><a class="xlink" href="post-08.html">Constant Drilling Upstairs Isn't Just …</a></div>
-</article><article class="card">
-  <div class="meta"><span class="badge"><svg viewBox="0 0 24 24"><path class="sway" style="transform-origin:4px 12px" d="M4 21V3h12v18zM4 21h16"/><circle class="pulse" cx="13" cy="12" r="1.1"/></svg> Coercive Systems</span><span>5 min · #06</span></div>
-  <h3><a class="xlink" href="post-06.html">&quot;Under Construction&quot; Isn&#x27;t a Status — It&#x27;s a Power Dynamic</a></h3>
-  <p>We&#x27;ve all encountered it: the website that&#x27;s been &quot;coming soon&quot; for three years, the relationship perpetually &quot;working on things,&quot; the workplace refor…</p>
-  <div class="ctx"><strong>Context links →</strong> <a class="xlink" href="post-08.html">Constant Drilling Upstairs Isn't Just …</a><a class="xlink" href="post-09.html">The Desire for a "Secret Exit" Isn't A…</a><a class="xlink" href="post-07.html">"White Glove Security" Isn't Premium P…</a></div>
-</article><article class="card">
-  <div class="meta"><span class="badge"><svg viewBox="0 0 24 24"><path class="shake" d="M12 3 2 20h20L12 3z"/><path class="blink" d="M12 10v4M12 17v.5"/></svg> Environmental Gaslighting</span><span>5 min · #07</span></div>
-  <h3><a class="xlink" href="post-07.html">&quot;White Glove Security&quot; Isn&#x27;t Premium Protection — It&#x27;s Aesthetized Control</a></h3>
-  <p>&quot;White glove security&quot; isn&#x27;t premium protection — it&#x27;s aesthetized control.…</p>
-  <div class="ctx"><strong>Context links →</strong> <a class="xlink" href="post-02.html">Why Venues Ban Cameras – And Why Enfor…</a><a class="xlink" href="post-06.html">"Under Construction" Isn't a Status — …</a><a class="xlink" href="post-08.html">Constant Drilling Upstairs Isn't Just …</a></div>
-</article><article class="card">
-  <div class="meta"><span class="badge"><svg viewBox="0 0 24 24"><path class="dash" d="M2 8c2-2 4-2 6 0s4 2 6 0 4-2 6 0M2 14c2-2 4-2 6 0s4 2 6 0 4-2 6 0M2 20c2-2 4-2 6 0s4 2 6 0 4-2 6 0"/></svg> Environmental Gaslighting</span><span>6 min · #08</span></div>
-  <h3><a class="xlink" href="post-08.html">Constant Drilling Upstairs Isn&#x27;t Just Noise — It&#x27;s Acoustic Territorial Control</a></h3>
-  <p>Constant drilling upstairs isn&#x27;t just noise — it&#x27;s acoustic territorial control.…</p>
-  <div class="ctx"><strong>Context links →</strong> <a class="xlink" href="post-10.html">Black Residue in Your AC Isn't Just Di…</a><a class="xlink" href="post-04.html">When Elevators Glitch Repeatedly, It's…</a><a class="xlink" href="post-06.html">"Under Construction" Isn't a Status — …</a></div>
-</article><article class="card">
-  <div class="meta"><span class="badge"><svg viewBox="0 0 24 24"><path class="sway" style="transform-origin:4px 12px" d="M4 21V3h12v18zM4 21h16"/><circle class="pulse" cx="13" cy="12" r="1.1"/></svg> Coercive Systems</span><span>6 min · #09</span></div>
-  <h3><a class="xlink" href="post-09.html">The Desire for a &quot;Secret Exit&quot; Isn&#x27;t About Architecture — It&#x27;s About Autonomy Under Threat</a></h3>
-  <p>The desire for a &quot;secret exit&quot; isn&#x27;t about architecture — it&#x27;s about autonomy under threat.…</p>
-  <div class="ctx"><strong>Context links →</strong> <a class="xlink" href="post-06.html">"Under Construction" Isn't a Status — …</a><a class="xlink" href="post-07.html">"White Glove Security" Isn't Premium P…</a><a class="xlink" href="post-08.html">Constant Drilling Upstairs Isn't Just …</a></div>
-</article><article class="card">
-  <div class="meta"><span class="badge"><svg viewBox="0 0 24 24"><path class="shake" d="M12 3 2 20h20L12 3z"/><path class="blink" d="M12 10v4M12 17v.5"/></svg> Environmental Gaslighting</span><span>5 min · #10</span></div>
-  <h3><a class="xlink" href="post-10.html">Black Residue in Your AC Isn&#x27;t Just Dirt — It&#x27;s Embodied Institutional Gaslighting</a></h3>
-  <p>Black residue in your AC isn&#x27;t just dirt — it&#x27;s embodied institutional gaslighting.…</p>
-  <div class="ctx"><strong>Context links →</strong> <a class="xlink" href="post-08.html">Constant Drilling Upstairs Isn't Just …</a><a class="xlink" href="post-04.html">When Elevators Glitch Repeatedly, It's…</a><a class="xlink" href="post-05.html">When You Press DOWN and the Lift Goes …</a></div>
-</article><article class="card">
-  <div class="meta"><span class="badge"><svg viewBox="0 0 24 24"><g class="spin" style="transform-origin:12px 12px"><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M19.1 4.9L17 7M7 17l-2.1 2.1"/><circle cx="12" cy="12" r="4.2"/></g></svg> Environmental Gaslighting</span><span>2 min · #11</span></div>
-  <h3><a class="xlink" href="post-11.html">The Service Elevator Never Arrives — It Simply Declines</a></h3>
-  <p>A freight lift that only answers to staff calls is a voting system built into your commute.…</p>
-  <div class="ctx"><strong>Context links →</strong> <a class="xlink" href="post-17.html">The Intercom That Only Answers In One …</a><a class="xlink" href="post-13.html">Mandatory Fun Is Coercion Wearing a Pa…</a><a class="xlink" href="post-18.html">The Hotel Minibar Is a Contract No One…</a></div>
-</article><article class="card">
-  <div class="meta"><span class="badge"><svg viewBox="0 0 24 24"><path class="draw" d="M2 12s3.5-6 10-6 10 6 10 6-3.5 6-10 6S2 12 2 12z"/><circle class="pulse" cx="12" cy="12" r="2.6"/></svg> Coercive Systems</span><span>2 min · #12</span></div>
-  <h3><a class="xlink" href="post-12.html">The CCTV Light That Never Turns Off Is Performing Surveillance, Not Doing It</a></h3>
-  <p>A blinking red LED costs pennies; belief in being watched costs everyone something else entirely.…</p>
-  <div class="ctx"><strong>Context links →</strong> <a class="xlink" href="post-17.html">The Intercom That Only Answers In One …</a><a class="xlink" href="post-22.html">The Gym Mirror That Flatters Is Also a…</a><a class="xlink" href="post-11.html">The Service Elevator Never Arrives — I…</a></div>
-</article><article class="card">
-  <div class="meta"><span class="badge"><svg viewBox="0 0 24 24"><rect class="float" x="9" y="3" width="6" height="11" rx="3"/><path class="draw" d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg> Coercive Systems</span><span>2 min · #13</span></div>
-  <h3><a class="xlink" href="post-13.html">Mandatory Fun Is Coercion Wearing a Party Hat</a></h3>
-  <p>Leisure that requires attendance is not leisure — it is unpaid emotional labor with snacks.…</p>
-  <div class="ctx"><strong>Context links →</strong> <a class="xlink" href="post-22.html">The Gym Mirror That Flatters Is Also a…</a><a class="xlink" href="post-17.html">The Intercom That Only Answers In One …</a><a class="xlink" href="post-18.html">The Hotel Minibar Is a Contract No One…</a></div>
-</article><article class="card">
-  <div class="meta"><span class="badge"><svg viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="9" rx="2"/><path class="draw" d="M8 11V7a4 4 0 0 1 8 0v4"/><circle class="pulse" cx="12" cy="15.5" r="1.3"/></svg> Domestic Rights</span><span>2 min · #14</span></div>
-  <h3><a class="xlink" href="post-14.html">Your Landlord&#x27;s &quot;Routine Inspection&quot; Is a Consent Question You Were Never Asked</a></h3>
-  <p>Twenty-four hours&#x27; notice is not permission; it is a schedule dressed as courtesy.…</p>
-  <div class="ctx"><strong>Context links →</strong> <a class="xlink" href="post-17.html">The Intercom That Only Answers In One …</a><a class="xlink" href="post-18.html">The Hotel Minibar Is a Contract No One…</a><a class="xlink" href="post-11.html">The Service Elevator Never Arrives — I…</a></div>
-</article><article class="card">
-  <div class="meta"><span class="badge"><svg viewBox="0 0 24 24"><path class="shake" d="M12 3 2 20h20L12 3z"/><path class="blink" d="M12 10v4M12 17v.5"/></svg> Digital Power</span><span>2 min · #15</span></div>
-  <h3><a class="xlink" href="post-15.html">The Loading Screen Lies: Progress Bars as Organizational Gaslighting</a></h3>
-  <p>A bar that reaches ninety percent and waits there is teaching millions of people to distrust their own instruments.…</p>
-  <div class="ctx"><strong>Context links →</strong> <a class="xlink" href="post-17.html">The Intercom That Only Answers In One …</a><a class="xlink" href="post-13.html">Mandatory Fun Is Coercion Wearing a Pa…</a><a class="xlink" href="post-22.html">The Gym Mirror That Flatters Is Also a…</a></div>
-</article><article class="card">
-  <div class="meta"><span class="badge"><svg viewBox="0 0 24 24"><path class="sway" style="transform-origin:4px 12px" d="M4 21V3h12v18zM4 21h16"/><circle class="pulse" cx="13" cy="12" r="1.1"/></svg> Liminal Spaces</span><span>2 min · #16</span></div>
-  <h3><a class="xlink" href="post-16.html">Open-Plan Offices Aren&#x27;t Open — They&#x27;re Panoramic Prisons</a></h3>
-  <p>You cannot whisper collaboration into existence, but you can certainly monitor it into compliance.…</p>
-  <div class="ctx"><strong>Context links →</strong> <a class="xlink" href="post-17.html">The Intercom That Only Answers In One …</a><a class="xlink" href="post-22.html">The Gym Mirror That Flatters Is Also a…</a><a class="xlink" href="post-13.html">Mandatory Fun Is Coercion Wearing a Pa…</a></div>
-</article><article class="card">
-  <div class="meta"><span class="badge"><svg viewBox="0 0 24 24"><g class="spin" style="transform-origin:12px 12px"><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M19.1 4.9L17 7M7 17l-2.1 2.1"/><circle cx="12" cy="12" r="4.2"/></g></svg> Coercive Systems</span><span>2 min · #17</span></div>
-  <h3><a class="xlink" href="post-17.html">The Intercom That Only Answers In One Direction</a></h3>
-  <p>A building that lets the lobby speak but never lets residents reply has chosen its audience.…</p>
-  <div class="ctx"><strong>Context links →</strong> <a class="xlink" href="post-11.html">The Service Elevator Never Arrives — I…</a><a class="xlink" href="post-22.html">The Gym Mirror That Flatters Is Also a…</a><a class="xlink" href="post-13.html">Mandatory Fun Is Coercion Wearing a Pa…</a></div>
-</article><article class="card">
-  <div class="meta"><span class="badge"><svg viewBox="0 0 24 24"><path class="grow" d="M4 20V10M10 20V4M16 20v-8M22 20H2"/></svg> Coercive Systems</span><span>2 min · #18</span></div>
-  <h3><a class="xlink" href="post-18.html">The Hotel Minibar Is a Contract No One Reads</a></h3>
-  <p>Snacks priced like surgery are a legal test: did the guest consent, or merely get hungry?…</p>
-  <div class="ctx"><strong>Context links →</strong> <a class="xlink" href="post-17.html">The Intercom That Only Answers In One …</a><a class="xlink" href="post-13.html">Mandatory Fun Is Coercion Wearing a Pa…</a><a class="xlink" href="post-22.html">The Gym Mirror That Flatters Is Also a…</a></div>
-</article><article class="card">
-  <div class="meta"><span class="badge"><svg viewBox="0 0 24 24"><path class="sway" style="transform-origin:4px 12px" d="M4 21V3h12v18zM4 21h16"/><circle class="pulse" cx="13" cy="12" r="1.1"/></svg> Environmental Gaslighting</span><span>2 min · #19</span></div>
-  <h3><a class="xlink" href="post-19.html">Why Every Emergency Exit Sign Glows Even When Nothing Is Burning</a></h3>
-  <p>Glowing exits sell the feeling of escape; whether the door behind them opens is a separate budget line.…</p>
-  <div class="ctx"><strong>Context links →</strong> <a class="xlink" href="post-13.html">Mandatory Fun Is Coercion Wearing a Pa…</a><a class="xlink" href="post-17.html">The Intercom That Only Answers In One …</a><a class="xlink" href="post-22.html">The Gym Mirror That Flatters Is Also a…</a></div>
-</article><article class="card">
-  <div class="meta"><span class="badge"><svg viewBox="0 0 24 24"><rect class="float" x="9" y="3" width="6" height="11" rx="3"/><path class="draw" d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg> Coercive Systems</span><span>2 min · #20</span></div>
-  <h3><a class="xlink" href="post-20.html">The Group Chat Admin Who Silences Everyone &#x27;For Their Own Good&#x27;</a></h3>
-  <p>Mute buttons are elevator buttons for conversation — press down, the room goes up.…</p>
-  <div class="ctx"><strong>Context links →</strong> <a class="xlink" href="post-11.html">The Service Elevator Never Arrives — I…</a><a class="xlink" href="post-17.html">The Intercom That Only Answers In One …</a><a class="xlink" href="post-22.html">The Gym Mirror That Flatters Is Also a…</a></div>
-</article><article class="card">
-  <div class="meta"><span class="badge"><svg viewBox="0 0 24 24"><path class="draw" d="M2 12s3.5-6 10-6 10 6 10 6-3.5 6-10 6S2 12 2 12z"/><circle class="pulse" cx="12" cy="12" r="2.6"/></svg> Coercive Systems</span><span>2 min · #21</span></div>
-  <h3><a class="xlink" href="post-21.html">Parking Garages Count Cars Better Than People — And That&#x27;s The Problem</a></h3>
-  <p>ANPR gates learned every plate but never learned whose complaint gets answered.…</p>
-  <div class="ctx"><strong>Context links →</strong> <a class="xlink" href="post-17.html">The Intercom That Only Answers In One …</a><a class="xlink" href="post-13.html">Mandatory Fun Is Coercion Wearing a Pa…</a><a class="xlink" href="post-22.html">The Gym Mirror That Flatters Is Also a…</a></div>
-</article><article class="card">
-  <div class="meta"><span class="badge"><svg viewBox="0 0 24 24"><path class="draw" d="M2 12s3.5-6 10-6 10 6 10 6-3.5 6-10 6S2 12 2 12z"/><circle class="pulse" cx="12" cy="12" r="2.6"/></svg> Liminal Spaces</span><span>2 min · #22</span></div>
-  <h3><a class="xlink" href="post-22.html">The Gym Mirror That Flatters Is Also a Compliance Tool</a></h3>
-  <p>Calibrated lighting in weight rooms isn&#x27;t vanity — it&#x27;s retention engineering wearing a ring light.…</p>
-  <div class="ctx"><strong>Context links →</strong> <a class="xlink" href="post-13.html">Mandatory Fun Is Coercion Wearing a Pa…</a><a class="xlink" href="post-17.html">The Intercom That Only Answers In One …</a><a class="xlink" href="post-18.html">The Hotel Minibar Is a Contract No One…</a></div>
-</article></section>
-</div>
-<aside class="rail">
-<div class="panel"><h4><svg viewBox="0 0 24 24"><path class="draw" d="M2 12s3.5-6 10-6 10 6 10 6-3.5 6-10 6S2 12 2 12z"/><circle class="pulse" cx="12" cy="12" r="2.6"/></svg> Start here — related to #01</h4><div class="rel"><a class="rel" href="post-02.html"><svg viewBox="0 0 24 24"><path class="draw" d="M2 12s3.5-6 10-6 10 6 10 6-3.5 6-10 6S2 12 2 12z"/><circle class="pulse" cx="12" cy="12" r="2.6"/></svg><span>Why Venues Ban Cameras – And Why Enforcement Feels So Pers…</span></a><a class="rel" href="post-04.html"><svg viewBox="0 0 24 24"><g class="spin" style="transform-origin:12px 12px"><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M19.1 4.9L17 7M7 17l-2.1 2.1"/><circle cx="12" cy="12" r="4.2"/></g></svg><span>When Elevators Glitch Repeatedly, It&#x27;s Not Just Maintenanc…</span></a><a class="rel" href="post-06.html"><svg viewBox="0 0 24 24"><path class="sway" style="transform-origin:4px 12px" d="M4 21V3h12v18zM4 21h16"/><circle class="pulse" cx="13" cy="12" r="1.1"/></svg><span>&quot;Under Construction&quot; Isn&#x27;t a Status — It&#x27;s a Power Dynamic…</span></a><a class="rel" href="post-08.html"><svg viewBox="0 0 24 24"><path class="dash" d="M2 8c2-2 4-2 6 0s4 2 6 0 4-2 6 0M2 14c2-2 4-2 6 0s4 2 6 0 4-2 6 0M2 20c2-2 4-2 6 0s4 2 6 0 4-2 6 0"/></svg><span>Constant Drilling Upstairs Isn&#x27;t Just Noise — It&#x27;s Acousti…</span></a></div></div>
-<div class="panel"><h4><svg viewBox="0 0 24 24"><path class="grow" d="M4 20V10M10 20V4M16 20v-8M22 20H2"/></svg> Full series</h4><nav class="toc"><a href="post-01.html"><span>01</span><span style="flex:1">Do You Want to Go to &quot;Ele Hand&quot;? The Thai En…</span></a><a href="post-02.html"><span>02</span><span style="flex:1">Why Venues Ban Cameras – And Why Enforcement…</span></a><a href="post-03.html"><span>03</span><span style="flex:1">Confluence&#x27;s &quot;Add Content&quot; Controls Aren&#x27;t J…</span></a><a href="post-04.html"><span>04</span><span style="flex:1">When Elevators Glitch Repeatedly, It&#x27;s Not J…</span></a><a href="post-05.html"><span>05</span><span style="flex:1">When You Press DOWN and the Lift Goes UP, It…</span></a><a href="post-06.html"><span>06</span><span style="flex:1">&quot;Under Construction&quot; Isn&#x27;t a Status — It&#x27;s a…</span></a><a href="post-07.html"><span>07</span><span style="flex:1">&quot;White Glove Security&quot; Isn&#x27;t Premium Protect…</span></a><a href="post-08.html"><span>08</span><span style="flex:1">Constant Drilling Upstairs Isn&#x27;t Just Noise …</span></a><a href="post-09.html"><span>09</span><span style="flex:1">The Desire for a &quot;Secret Exit&quot; Isn&#x27;t About A…</span></a><a href="post-10.html"><span>10</span><span style="flex:1">Black Residue in Your AC Isn&#x27;t Just Dirt — I…</span></a><a href="post-11.html"><span>11</span><span style="flex:1">The Service Elevator Never Arrives — It Simp…</span></a><a href="post-12.html"><span>12</span><span style="flex:1">The CCTV Light That Never Turns Off Is Perfo…</span></a><a href="post-13.html"><span>13</span><span style="flex:1">Mandatory Fun Is Coercion Wearing a Party Ha…</span></a><a href="post-14.html"><span>14</span><span style="flex:1">Your Landlord&#x27;s &quot;Routine Inspection&quot; Is a Co…</span></a><a href="post-15.html"><span>15</span><span style="flex:1">The Loading Screen Lies: Progress Bars as Or…</span></a><a href="post-16.html"><span>16</span><span style="flex:1">Open-Plan Offices Aren&#x27;t Open — They&#x27;re Pano…</span></a><a href="post-17.html"><span>17</span><span style="flex:1">The Intercom That Only Answers In One Direct…</span></a><a href="post-18.html"><span>18</span><span style="flex:1">The Hotel Minibar Is a Contract No One Reads…</span></a><a href="post-19.html"><span>19</span><span style="flex:1">Why Every Emergency Exit Sign Glows Even Whe…</span></a><a href="post-20.html"><span>20</span><span style="flex:1">The Group Chat Admin Who Silences Everyone &#x27;…</span></a><a href="post-21.html"><span>21</span><span style="flex:1">Parking Garages Count Cars Better Than Peopl…</span></a><a href="post-22.html"><span>22</span><span style="flex:1">The Gym Mirror That Flatters Is Also a Compl…</span></a></nav></div>
-</aside>
-</main>
-<footer><span>THE CONTROL FILES · generated by split22.py from '22 blogs in 1 HTML file'</span><span><a class="xlink" href="post-01.html">Begin reading →</a></span></footer>
-</body></html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Control Files</title>
+  <!-- Fixed: Properly quoted attributes and closed tag -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Fixed: Added aria-hidden to decorative empty elements for screen reader accessibility -->
+  <div aria-hidden="true"></div>
+  <i aria-hidden="true"></i>
+  <i aria-hidden="true"></i>
+  <i aria-hidden="true"></i>
+  <div aria-hidden="true"></div>
+
+  <header>
+    <!-- Fixed: Added aria-current="page" -->
+    <a href="index.html" aria-current="page"><span>THE CONTROL FILES</span></a>
+    <span>22 dispatches · hover any link to see it go <span>negative</span></span>
+  </header>
+
+  <main>
+    <div>
+      <section>
+        <h1>The Control Files</h1>
+        <p>One cursed HTML archive, split into twenty-two interconnected dispatches on coercive systems, environmental gaslighting, liminal architecture and digital power. Every article links to its semantic neighbours.</p>
+        <div>
+          <span><b>22</b> files</span>
+          <span><b>88</b> contextual rail links</span>
+          <span><b>22</b> in-body contextual links</span>
+          <span><b>13</b> animated SVG icon rigs</span>
+        </div>
+      </section>
+
+      <section>
+        <article>
+          <div><span> Language &amp; Culture</span><span>10 min · #01</span></div>
+          <!-- Fixed: Changed h3 to h2 to fix heading hierarchy -->
+          <h2><a href="post-01.html">Do You Want to Go to "Ele Hand"? The Thai English Accent, Explained Through a Bangkok Love Story</a></h2>
+          <p>A love story, a language lesson, and everything you need to know about the Thai English accent.…</p>
+          <div><strong>Context links →</strong> <a href="post-02.html">Why Venues Ban Cameras – And Why Enfor…</a><a href="post-04.html">When Elevators Glitch Repeatedly, It&#39;s…</a><a href="post-06.html">&quot;Under Construction&quot; Isn&#39;t a Status — …</a></div>
+        </article>
+        
+        <article>
+          <div><span> Coercive Systems</span><span>6 min · #02</span></div>
+          <h2><a href="post-02.html">Why Venues Ban Cameras – And Why Enforcement Feels So Personal</a></h2>
+          <p>Why do venues ban cameras — and why does enforcement feel so personal?…</p>
+          <div><strong>Context links →</strong> <a href="post-07.html">&quot;White Glove Security&quot; Isn&#39;t Premium P…</a><a href="post-04.html">When Elevators Glitch Repeatedly, It&#39;s…</a><a href="post-08.html">Constant Drilling Upstairs Isn&#39;t Just …</a></div>
+        </article>
+        
+        <article>
+          <div><span> Digital Power</span><span>4 min · #03</span></div>
+          <h2><a href="post-03.html">Confluence&#39;s &quot;Add Content&quot; Controls Aren&#39;t Just a Feature — They&#39;re an Architecture of Organizational Power</a></h2>
+          <p>Confluence&#39;s &quot;Add Content&quot; controls aren&#39;t just a feature — they&#39;re an architecture of organizational power.…</p>
+          <div><strong>Context links →</strong> <a href="post-07.html">&quot;White Glove Security&quot; Isn&#39;t Premium P…</a><a href="post-04.html">When Elevators Glitch Repeatedly, It&#39;s…</a><a href="post-02.html">Why Venues Ban Cameras – And Why Enfor…</a></div>
+        </article>
+        
+        <article>
+          <div><span> Environmental Gaslighting</span><span>5 min · #04</span></div>
+          <h2><a href="post-04.html">When Elevators Glitch Repeatedly, It&#39;s Not Just Maintenance — It&#39;s Environmental Control</a></h2>
+          <p>When elevators glitch repeatedly, it&#39;s not just a maintenance problem — it&#39;s an environmental control tactic.…</p>
+          <div><strong>Context links →</strong> <a href="post-10.html">Black Residue in Your AC Isn&#39;t Just Di…</a><a href="post-08.html">Constant Drilling Upstairs Isn&#39;t Just …</a><a href="post-05.html">When You Press DOWN and the Lift Goes …</a></div>
+        </article>
+        
+        <article>
+          <div><span> Environmental Gaslighting</span><span>5 min · #05</span></div>
+          <h2><a href="post-05.html">When You Press DOWN and the Lift Goes UP, It&#39;s Not Just a Wiring Fault — It&#39;s Embodied Gaslighting</a></h2>
+          <p>When you press DOWN and the lift goes UP, it&#39;s not just a wiring fault — it&#39;s embodied gaslighting.…</p>
+          <div><strong>Context links →</strong> <a href="post-04.html">When Elevators Glitch Repeatedly, It&#39;s…</a><a href="post-10.html">Black Residue in Your AC Isn&#39;t Just Di…</a><a href="post-08.html">Constant Drilling Upstairs Isn&#39;t Just …</a></div>
+        </article>
+        
+        <article>
+          <div><span> Coercive Systems</span><span>5 min · #06</span></div>
+          <h2><a href="post-06.html">&quot;Under Construction&quot; Isn&#39;t a Status — It&#39;s a Power Dynamic</a></h2>
+          <p>We&#39;ve all encountered it: the website that&#39;s been &quot;coming soon&quot; for three years, the relationship perpetually &quot;working on things,&quot; the workplace refor…</p>
+          <div><strong>Context links →</strong> <a href="post-08.html">Constant Drilling Upstairs Isn&#39;t Just …</a><a href="post-09.html">The Desire for a &quot;Secret Exit&quot; Isn&#39;t A…</a><a href="post-07.html">&quot;White Glove Security&quot; Isn&#39;t Premium P…</a></div>
+        </article>
+        
+        <article>
+          <div><span> Environmental Gaslighting</span><span>5 min · #07</span></div>
+          <h2><a href="post-07.html">&quot;White Glove Security&quot; Isn&#39;t Premium Protection — It&#39;s Aesthetized Control</a></h2>
+          <p>&quot;White glove security&quot; isn&#39;t premium protection — it&#39;s aesthetized control.…</p>
+          <div><strong>Context links →</strong> <a href="post-02.html">Why Venues Ban Cameras – And Why Enfor…</a><a href="post-06.html">&quot;Under Construction&quot; Isn&#39;t a Status — …</a><a href="post-08.html">Constant Drilling Upstairs Isn&#39;t Just …</a></div>
+        </article>
+        
+        <article>
+          <div><span> Environmental Gaslighting</span><span>6 min · #08</span></div>
+          <h2><a href="post-08.html">Constant Drilling Upstairs Isn&#39;t Just Noise — It&#39;s Acoustic Territorial Control</a></h2>
+          <p>Constant drilling upstairs isn&#39;t just noise — it&#39;s acoustic territorial control.…</p>
+          <div><strong>Context links →</strong> <a href="post-10.html">Black Residue in Your AC Isn&#39;t Just Di…</a><a href="post-04.html">When Elevators Glitch Repeatedly, It&#39;s…</a><a href="post-06.html">&quot;Under Construction&quot; Isn&#39;t a Status — …</a></div>
+        </article>
+        
+        <article>
+          <div><span> Coercive Systems</span><span>6 min · #09</span></div>
+          <h2><a href="post-09.html">The Desire for a &quot;Secret Exit&quot; Isn&#39;t About Architecture — It&#39;s About Autonomy Under Threat</a></h2>
+          <p>The desire for a &quot;secret exit&quot; isn&#39;t about architecture — it&#39;s about autonomy under threat.…</p>
+          <div><strong>Context links →</strong> <a href="post-06.html">&quot;Under Construction&quot; Isn&#39;t a Status — …</a><a href="post-07.html">&quot;White Glove Security&quot; Isn&#39;t Premium P…</a><a href="post-08.html">Constant Drilling Upstairs Isn&#39;t Just …</a></div>
+        </article>
+        
+        <article>
+          <div><span> Environmental Gaslighting</span><span>5 min · #10</span></div>
+          <h2><a href="post-10.html">Black Residue in Your AC Isn&#39;t Just Dirt — It&#39;s Embodied Institutional Gaslighting</a></h2>
+          <p>Black residue in your AC isn&#39;t just dirt — it&#39;s embodied institutional gaslighting.…</p>
+          <div><strong>Context links →</strong> <a href="post-08.html">Constant Drilling Upstairs Isn&#39;t Just …</a><a href="post-04.html">When Elevators Glitch Repeatedly, It&#39;s…</a><a href="post-05.html">When You Press DOWN and the Lift Goes …</a></div>
+        </article>
+        
+        <article>
+          <div><span> Environmental Gaslighting</span><span>2 min · #11</span></div>
+          <h2><a href="post-11.html">The Service Elevator Never Arrives — It Simply Declines</a></h2>
+          <p>A freight lift that only answers to staff calls is a voting system built into your commute.…</p>
+          <div><strong>Context links →</strong> <a href="post-17.html">The Intercom That Only Answers In One …</a><a href="post-13.html">Mandatory Fun Is Coercion Wearing a Pa…</a><a href="post-18.html">The Hotel Minibar Is a Contract No One…</a></div>
+        </article>
+        
+        <article>
+          <div><span> Coercive Systems</span><span>2 min · #12</span></div>
+          <h2><a href="post-12.html">The CCTV Light That Never Turns Off Is Performing Surveillance, Not Doing It</a></h2>
+          <p>A blinking red LED costs pennies; belief in being watched costs everyone something else entirely.…</p>
+          <div><strong>Context links →</strong> <a href="post-17.html">The Intercom That Only Answers In One …</a><a href="post-22.html">The Gym Mirror That Flatters Is Also a…</a><a href="post-11.html">The Service Elevator Never Arrives — I…</a></div>
+        </article>
+        
+        <article>
+          <div><span> Coercive Systems</span><span>2 min · #13</span></div>
+          <h2><a href="post-13.html">Mandatory Fun Is Coercion Wearing a Party Hat</a></h2>
+          <p>Leisure that requires attendance is not leisure — it is unpaid emotional labor with snacks.…</p>
+          <div><strong>Context links →</strong> <a href="post-22.html">The Gym Mirror That Flatters Is Also a…</a><a href="post-17.html">The Intercom That Only Answers In One …</a><a href="post-18.html">The Hotel Minibar Is a Contract No One…</a></div>
+        </article>
+        
+        <article>
+          <div><span> Domestic Rights</span><span>2 min · #14</span></div>
+          <h2><a href="post-14.html">Your Landlord&#39;s &quot;Routine Inspection&quot; Is a Consent Question You Were Never Asked</a></h2>
+          <p>Twenty-four hours&#39; notice is not permission; it is a schedule dressed as courtesy.…</p>
+          <div><strong>Context links →</strong> <a href="post-17.html">The Intercom That Only Answers In One …</a><a href="post-18.html">The Hotel Minibar Is a Contract No One…</a><a href="post-11.html">The Service Elevator Never Arrives — I…</a></div>
+        </article>
+        
+        <article>
+          <div><span> Digital Power</span><span>2 min · #15</span></div>
+          <h2><a href="post-15.html">The Loading Screen Lies: Progress Bars as Organizational Gaslighting</a></h2>
+          <p>A bar that reaches ninety percent and waits there is teaching millions of people to distrust their own instruments.…</p>
+          <div><strong>Context links →</strong> <a href="post-17.html">The Intercom That Only Answers In One …</a><a href="post-13.html">Mandatory Fun Is Coercion Wearing a Pa…</a><a href="post-22.html">The Gym Mirror That Flatters Is Also a…</a></div>
+        </article>
+        
+        <article>
+          <div><span> Liminal Spaces</span><span>2 min · #16</span></div>
+          <h2><a href="post-16.html">Open-Plan Offices Aren&#39;t Open — They&#39;re Panoramic Prisons</a></h2>
+          <p>You cannot whisper collaboration into existence, but you can certainly monitor it into compliance.…</p>
+          <div><strong>Context links →</strong> <a href="post-17.html">The Intercom That Only Answers In One …</a><a href="post-22.html">The Gym Mirror That Flatters Is Also a…</a><a href="post-13.html">Mandatory Fun Is Coercion Wearing a Pa…</a></div>
+        </article>
+        
+        <article>
+          <div><span> Coercive Systems</span><span>2 min · #17</span></div>
+          <h2><a href="post-17.html">The Intercom That Only Answers In One Direction</a></h2>
+          <p>A building that lets the lobby speak but never lets residents reply has chosen its audience.…</p>
+          <div><strong>Context links →</strong> <a href="post-11.html">The Service Elevator Never Arrives — I…</a><a href="post-22.html">The Gym Mirror That Flatters Is Also a…</a><a href="post-13.html">Mandatory Fun Is Coercion Wearing a Pa…</a></div>
+        </article>
+        
+        <article>
+          <div><span> Coercive Systems</span><span>2 min · #18</span></div>
+          <h2><a href="post-18.html">The Hotel Minibar Is a Contract No One Reads</a></h2>
+          <p>Snacks priced like surgery are a legal test: did the guest consent, or merely get hungry?…</p>
+          <div><strong>Context links →</strong> <a href="post-17.html">The Intercom That Only Answers In One …</a><a href="post-13.html">Mandatory Fun Is Coercion Wearing a Pa…</a><a href="post-22.html">The Gym Mirror That Flatters Is Also a…</a></div>
+        </article>
+        
+        <article>
+          <div><span> Environmental Gaslighting</span><span>2 min · #19</span></div>
+          <h2><a href="post-19.html">Why Every Emergency Exit Sign Glows Even When Nothing Is Burning</a></h2>
+          <p>Glowing exits sell the feeling of escape; whether the door behind them opens is a separate budget line.…</p>
+          <div><strong>Context links →</strong> <a href="post-13.html">Mandatory Fun Is Coercion Wearing a Pa…</a><a href="post-17.html">The Intercom That Only Answers In One …</a><a href="post-22.html">The Gym Mirror That Flatters Is Also a…</a></div>
+        </article>
+        
+        <article>
+          <div><span> Coercive Systems</span><span>2 min · #20</span></div>
+          <h2><a href="post-20.html">The Group Chat Admin Who Silences Everyone &#39;For Their Own Good&#39;</a></h2>
+          <p>Mute buttons are elevator buttons for conversation — press down, the room goes up.…</p>
+          <div><strong>Context links →</strong> <a href="post-11.html">The Service Elevator Never Arrives — I…</a><a href="post-17.html">The Intercom That Only Answers In One …</a><a href="post-22.html">The Gym Mirror That Flatters Is Also a…</a></div>
+        </article>
+        
+        <article>
+          <div><span> Coercive Systems</span><span>2 min · #21</span></div>
+          <h2><a href="post-21.html">Parking Garages Count Cars Better Than People — And That&#39;s The Problem</a></h2>
+          <p>ANPR gates learned every plate but never learned whose complaint gets answered.…</p>
+          <div><strong>Context links →</strong> <a href="post-17.html">The Intercom That Only Answers In One …</a><a href="post-13.html">Mandatory Fun Is Coercion Wearing a Pa…</a><a href="post-22.html">The Gym Mirror That Flatters Is Also a…</a></div>
+        </article>
+        
+        <article>
+          <div><span> Liminal Spaces</span><span>2 min · #22</span></div>
+          <h2><a href="post-22.html">The Gym Mirror That Flatters Is Also a Compliance Tool</a></h2>
+          <p>Calibrated lighting in weight rooms isn&#39;t vanity — it&#39;s retention engineering wearing a ring light.…</p>
+          <div><strong>Context links →</strong> <a href="post-13.html">Mandatory Fun Is Coercion Wearing a Pa…</a><a href="post-17.html">The Intercom That Only Answers In One …</a><a href="post-18.html">The Hotel Minibar Is a Contract No One…</a></div>
+        </article>
+      </section>
+    </div>
+
+    <aside>
+      <div>
+        <!-- Fixed: Changed h4 to h2 to fix heading hierarchy -->
+        <h2>Start here — related to #01</h2>
+        <div>
+          <a href="post-02.html"><span>Why Venues Ban Cameras – And Why Enforcement Feels So Pers…</span></a>
+          <a href="post-04.html"><span>When Elevators Glitch Repeatedly, It&#39;s Not Just Maintenanc…</span></a>
+          <a href="post-06.html"><span>&quot;Under Construction&quot; Isn&#39;t a Status — It&#39;s a Power Dynamic…</span></a>
+          <a href="post-08.html"><span>Constant Drilling Upstairs Isn&#39;t Just Noise — It&#39;s Acousti…</span></a>
+        </div>
+      </div>
+      
+      <div>
+        <!-- Fixed: Changed h4 to h2 to fix heading hierarchy -->
+        <h2>Full series</h2>
+        <nav>
+          <a href="post-01.html"><span>01</span><span>Do You Want to Go to &quot;Ele Hand&quot;? The Thai En…</span></a>
+          <a href="post-02.html"><span>02</span><span>Why Venues Ban Cameras – And Why Enforcement…</span></a>
+          <a href="post-03.html"><span>03</span><span>Confluence&#39;s &quot;Add Content&quot; Controls Aren&#39;t J…</span></a>
+          <a href="post-04.html"><span>04</span><span>When Elevators Glitch Repeatedly, It&#39;s Not J…</span></a>
+          <a href="post-05.html"><span>05</span><span>When You Press DOWN and the Lift Goes UP, It…</span></a>
+          <a href="post-06.html"><span>06</span><span>&quot;Under Construction&quot; Isn&#39;t a Status — It&#39;s a…</span></a>
+          <a href="post-07.html"><span>07</span><span>&quot;White Glove Security&quot; Isn&#39;t Premium Protect…</span></a>
+          <a href="post-08.html"><span>08</span><span>Constant Drilling Upstairs Isn&#39;t Just Noise …</span></a>
+          <a href="post-09.html"><span>09</span><span>The Desire for a &quot;Secret Exit&quot; Isn&#39;t About A…</span></a>
+          <a href="post-10.html"><span>10</span><span>Black Residue in Your AC Isn&#39;t Just Dirt — I…</span></a>
+          <a href="post-11.html"><span>11</span><span>The Service Elevator Never Arrives — It Simp…</span></a>
+          <a href="post-12.html"><span>12</span><span>The CCTV Light That Never Turns Off Is Perfo…</span></a>
+          <a href="post-13.html"><span>13</span><span>Mandatory Fun Is Coercion Wearing a Party Ha…</span></a>
+          <a href="post-14.html"><span>14</span><span>Your Landlord&#39;s &quot;Routine Inspection&quot; Is a Co…</span></a>
+          <a href="post-15.html"><span>15</span><span>The Loading Screen Lies: Progress Bars as Or…</span></a>
+          <a href="post-16.html"><span>16</span><span>Open-Plan Offices Aren&#39;t Open — They&#39;re Pano…</span></a>
+          <a href="post-17.html"><span>17</span><span>The Intercom That Only Answers In One Direct…</span></a>
+          <a href="post-18.html"><span>18</span><span>The Hotel Minibar Is a Contract No One Reads…</span></a>
+          <a href="post-19.html"><span>19</span><span>Why Every Emergency Exit Sign Glows Even Whe…</span></a>
+          <a href="post-20.html"><span>20</span><span>The Group Chat Admin Who Silences Everyone &#39;…</span></a>
+          <a href="post-21.html"><span>21</span><span>Parking Garages Count Cars Better Than Peopl…</span></a>
+          <a href="post-22.html"><span>22</span><span>The Gym Mirror That Flatters Is Also a Compl…</span></a>
+        </nav>
+      </div>
+    </aside>
+  </main>
+
+  <footer>
+    <span>THE CONTROL FILES · generated by split22.py from &#39;22 blogs in 1 HTML file&#39;</span>
+    <span><a href="post-01.html">Begin reading →</a></span>
+  </footer>
+
+</body>
+</html>
