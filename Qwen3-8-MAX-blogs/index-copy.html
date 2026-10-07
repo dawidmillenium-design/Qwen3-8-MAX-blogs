@@ -1,0 +1,538 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>THE CONTROL FILES — Hub · all 22 dispatches — copy</title>
+<meta name="description" content="Central hub for all 22 Control Files dispatches: coercive systems, environmental gaslighting, liminal architecture and digital power. Contextual inter-links, negative-colour hover effects, animated SVG icon rigs.">
+<meta property="og:title" content="THE CONTROL FILES — Hub">
+<meta property="og:description" content="22 interconnected dispatches on power, space &amp; perception. Hover goes negative.">
+<meta property="og:type" content="website">
+<style>
+
+:root{color-scheme:dark;--bg:#05060f;--ink:#eef0ff;--muted:#9aa0c3;--panel:rgba(255,255,255,.05);
+--line:rgba(255,255,255,.14);--r:22px;--fd:ui-rounded,"SF Pro Rounded",system-ui,sans-serif;
+--fb:Charter,"Iowan Old Style",Georgia,serif;font-size:clamp(15px,.55vw+.9rem,18px)}
+
+*{box-sizing:border-box}
+
+html{scroll-behavior:smooth}
+
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--fb);line-height:1.65;
+overflow-x:hidden;text-wrap:pretty hyphenate}
+
+/* VRAM-eating backdrop stack */
+body::before{content:"";position:fixed;inset:-20%;z-index:-2;pointer-events:none;
+background:conic-gradient(from var(--ang),color-mix(in oklab,var(--a) 28%,transparent),
+color-mix(in oklab,var(--b) 30%,transparent),color-mix(in oklab,var(--c) 26%,transparent),
+color-mix(in oklab,var(--a) 28%,transparent));filter:blur(90px) saturate(1.4);
+animation:spin 40s linear infinite;mix-blend-mode:screen}
+to{--ang:360deg}
+
+.blob{position:fixed;width:55vmax;height:55vmax;border-radius:50%;z-index:-1;pointer-events:none;
+filter:blur(90px) hue-rotate(0deg);mix-blend-mode:screen;opacity:.5;
+animation:morph 26s ease-in-out infinite alternate,hue 30s linear infinite}
+
+.blob.b1{background:radial-gradient(circle,var(--a),transparent 70%);left:-15vmax;top:-15vmax}
+
+.blob.b2{background:radial-gradient(circle,var(--b),transparent 70%);right:-18vmax;top:20vh;animation-delay:-8s}
+
+.blob.b3{background:radial-gradient(circle,var(--c),transparent 70%);left:10vw;bottom:-25vmax;animation-delay:-15s}
+to{border-radius:38% 62% 55% 45%/50% 40% 60% 50%;transform:translate3d(6vw,-4vh,0) scale(1.15)}
+to{filter:blur(90px) hue-rotate(360deg)}
+
+.grain{position:fixed;inset:0;z-index:60;pointer-events:none;opacity:.14;mix-blend-mode:overlay;
+background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+animation:jitter .4s steps(4) infinite}
+to{background-position:40px 30px}
+
+header.site,nav.rail,footer{backdrop-filter:blur(22px) saturate(1.6);-webkit-backdrop-filter:blur(22px) saturate(1.6);
+background:color-mix(in oklab,var(--bg) 62%,transparent)}
+
+header.site{position:sticky;top:0;z-index:50;display:flex;gap:1rem;align-items:center;
+padding:.8rem clamp(1rem,4vw,3rem);border-bottom:1px solid var(--line)}
+
+.brand{display:flex;align-items:center;gap:.6rem;font-family:var(--fd);font-weight:800;
+letter-spacing:.02em;font-size:1.15rem;text-decoration:none;color:var(--ink)}
+
+.brand svg{width:26px;height:26px}
+
+main{max-width:1400px;margin:0 auto;padding:clamp(1rem,3vw,2.5rem);display:grid;
+grid-template-columns:minmax(0,1fr) 320px;gap:2rem;container-type:inline-size}
+main{grid-template-columns:1fr}
+
+article.post{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);
+padding:clamp(1.2rem,3vw,2.4rem);backdrop-filter:blur(18px);position:relative;isolation:isolate;
+animation:reveal linear both;animation-timeline:view();animation-range:entry 5% cover 30%}
+from{opacity:0;transform:translateY(40px) scale(.98);filter:blur(6px)}
+
+to{opacity:1;transform:none;filter:none}
+
+article.post::before{content:"";position:absolute;inset:-1px;border-radius:inherit;z-index:-1;
+background:conic-gradient(from var(--ang),var(--a),var(--b),var(--c),var(--a));
+filter:blur(60px);opacity:.28;mix-blend-mode:plus-lighter;animation:spin 24s linear infinite}
+
+h1{font-family:var(--fd);font-size:clamp(1.7rem,3.4vw,2.9rem);line-height:1.08;
+text-wrap:balance;letter-spacing:-.01em;margin:.2em 0 .4em}
+
+h2{font-family:var(--fd);font-size:1.35rem;margin:1.6em 0 .4em;text-wrap:balance}
+
+h3{font-family:var(--fd);font-size:1.08rem;color:color-mix(in oklab,var(--ink) 80%,var(--c))}
+
+.meta{display:flex;flex-wrap:wrap;gap:.5rem;align-items:center;color:var(--muted);
+font-family:var(--fd);font-size:.85rem}
+
+.badge{display:inline-flex;gap:.45rem;align-items:center;padding:.3rem .8rem;border-radius:99px;
+border:1px solid var(--line);background:color-mix(in oklab,var(--a) 14%,transparent);
+font-weight:700;color:var(--ink);text-decoration:none;transition:.35s cubic-bezier(.2,.9,.2,1)}
+
+.badge svg{width:18px;height:18px}
+
+.badge:hover{background:color-mix(in oklab,var(--c) 30%,transparent);
+transform:translateY(-2px) scale(1.04);box-shadow:0 8px 30px -8px color-mix(in oklab,var(--c) 60%,transparent)}
+
+/* ---------- NEGATIVE-COLOR HOVER: the signature effect ---------- */
+a.xlink,a.rel,a.pager a,.toc a{text-decoration:none;color:inherit;background-image:linear-gradient(
+color-mix(in oklab,var(--a) 85%,white),color-mix(in oklab,var(--c) 85%,white));
+background-size:0% 100%;background-repeat:no-repeat;background-position:0 92%;
+transition:background-size .45s cubic-bezier(.2,.9,.2,1),filter .45s ease,color .3s;text-shadow:0 0 1px rgba(0,0,0,.4)}
+
+a.xlink:hover,a.rel:hover,.toc a:hover,.pager a:hover{color:#fff;background-size:100% 100%;
+filter:invert(1) hue-rotate(180deg) contrast(1.35) saturate(1.6);
+mix-blend-mode:difference;border-radius:6px;padding:0 .15em;margin:0 -.15em}
+
+a.xlink strong,a.xlink em{font-style:inherit;font-weight:inherit}
+
+.negchip{display:inline-block;background:var(--ink);color:var(--bg);font-family:var(--fd);
+font-weight:800;padding:.15rem .6rem;border-radius:8px;mix-blend-mode:difference;transition:.4s}
+
+.negchip:hover{filter:invert(1) hue-rotate(180deg);transform:rotate(-2deg) scale(1.08)}
+
+/* ---------- animated svg icon engine ---------- */
+article svg,aside svg,header svg{fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;
+stroke-linejoin:round;overflow:visible}
+
+.spin{animation:rspin 6s linear infinite}
+to{transform:rotate(360deg)}
+
+.pulse{transform-origin:center;animation:rpulse 1.6s ease-in-out infinite;fill:currentColor;stroke:none}
+50%{transform:scale(1.45);opacity:.55}
+
+.blink{animation:rblink 1.3s steps(2,jump-none) infinite;fill:currentColor;stroke:none}
+50%{opacity:.15}
+
+.dash{stroke-dasharray:120;stroke-dashoffset:120;animation:rdash 3s linear infinite}
+to{stroke-dashoffset:-120}
+
+.draw{stroke-dasharray:160;animation:rdraw 4s ease-in-out infinite alternate}
+from{stroke-dashoffset:160}
+to{stroke-dashoffset:0}
+
+.float{animation:rfloat 3.2s ease-in-out infinite}
+50%{transform:translateY(-2.5px)}
+
+.sway{animation:rsway 2.6s ease-in-out infinite}
+50%{transform:rotate(8deg)}
+
+.shake{animation:rshake .5s ease-in-out infinite}
+25%{transform:translateX(.6px) rotate(1deg)}
+75%{transform:translateX(-.6px) rotate(-1deg)}
+
+.grow{stroke-dasharray:60;stroke-dashoffset:60;animation:rgrow 2.4s ease forwards,rglow 2.4s ease-in-out infinite}
+to{stroke-dashoffset:0}
+50%{opacity:.5}
+
+/* ---------- rails ---------- */
+aside.rail{position:sticky;top:76px;align-self:start;display:grid;gap:1rem;
+container-type:inline-size}
+
+.panel{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);padding:1.1rem 1.2rem;
+backdrop-filter:blur(16px) saturate(1.4)}
+
+.panel h4{margin:.1rem 0 .6rem;font-family:var(--fd);display:flex;gap:.5rem;align-items:center}
+
+.panel h4 svg{width:20px;height:20px;color:var(--c)}
+
+.toc{display:grid;gap:.35rem;font-family:var(--fd);font-size:.9rem}
+
+.toc a{display:flex;justify-content:space-between;gap:.5rem;padding:.25rem .4rem;border-radius:8px}
+
+.rel{display:grid;gap:.5rem}
+
+a.rel{display:flex;gap:.6rem;align-items:center;border:1px solid var(--line);border-radius:14px;
+padding:.55rem .7rem;background:color-mix(in oklab,var(--b) 8%,transparent)}
+
+a.rel svg{width:22px;height:22px;flex:none;color:var(--a)}
+
+a.rel span{font-family:var(--fd);font-size:.85rem;line-height:1.25}
+
+.pager{display:flex;justify-content:space-between;gap:1rem;margin-top:1.4rem;font-family:var(--fd)}
+
+.pager a{border:1px solid var(--line);border-radius:99px;padding:.55rem 1.1rem;display:inline-flex;
+gap:.5rem;align-items:center;background:var(--panel);backdrop-filter:blur(10px)}
+
+footer{position:sticky;bottom:0;z-index:40;border-top:1px solid var(--line);padding:.6rem 2rem;
+display:flex;justify-content:space-between;gap:1rem;font-family:var(--fd);font-size:.8rem;color:var(--muted)}
+
+.progress{position:fixed;top:0;left:0;height:3px;width:100%;z-index:70;transform-origin:0 50%;
+transform:scaleX(0);background:linear-gradient(90deg,var(--a),var(--b),var(--c));
+animation:prog linear;animation-timeline:scroll(root)}
+to{transform:scaleX(1)}
+*,*::before,*::after{animation:none!important;transition:none!important}
+
+a:hover{filter:none!important;mix-blend-mode:normal!important}
+.blob,.grain,.progress,aside,footer{display:none}
+article.post{break-inside:avoid;filter:none!important}
+a.xlink:hover,a.rel:hover,.toc a:hover,.pager a:hover{color:#fff;background-size:100% 100%;
+filter:invert(1) hue-rotate(180deg) contrast(1.35) saturate(1.6);
+mix-blend-mode:difference;border-radius:6px;padding:0 .15em;margin:0 -.15em}
+
+/* ================= HUB EXTRAS ================= */
+/* negative-colour hover everywhere */
+.hubcard:hover .ic svg,.jump a:hover svg{filter:invert(1) hue-rotate(180deg) contrast(1.4)}
+.map a:hover circle{filter:invert(1) hue-rotate(180deg)}
+.lchip:hover{filter:invert(1) hue-rotate(180deg)}
+.emblem .pulse2{animation-name:rpulse;animation-duration:2.2s;animation-timing-function:ease-in-out;animation-iteration-count:infinite}
+.emblem .orbitg{animation-name:spin;animation-duration:9s;animation-timing-function:linear;animation-iteration-count:infinite}
+.emblem .orbitg2{animation-name:spin;animation-duration:15s;animation-timing-function:linear;animation-iteration-count:infinite;animation-direction:reverse}
+.grid{display:grid;gap:1.4rem;grid-template-columns:repeat(auto-fill,minmax(min(420px,100%),1fr));container-type:inline-size}
+.hero{padding:clamp(2rem,7vw,5rem) 0 1.5rem;text-align:center}
+.hero h1{font-size:clamp(2.4rem,7vw,5rem);margin:0;font-family:var(--fd);letter-spacing:-.02em;
+background:linear-gradient(100deg,var(--a),var(--b) 45%,var(--c));-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero p{color:var(--muted);max-width:60ch;margin:1rem auto;font-family:var(--fd)}
+.stats{display:flex;gap:1.2rem;justify-content:center;flex-wrap:wrap;font-family:var(--fd);font-size:.85rem;color:var(--muted)}
+.stats b{color:var(--ink)}
+.ctx{font-family:var(--fd);font-size:.8rem;display:flex;flex-wrap:wrap;gap:.5rem;align-items:center;color:var(--muted)}
+.ctx strong{text-transform:uppercase;letter-spacing:.08em;font-size:.7rem}
+@keyframes dashmove{to{stroke-dashoffset:-40}}
+@keyframes marq{to{transform:translateX(-50%)}}
+@keyframes spinang{to{--ang:360deg}}
+.wrap{max-width:1200px;margin:0 auto;padding:0 clamp(1rem,4vw,3rem) 4rem}
+.topgrid{display:grid;gap:2rem;grid-template-columns:minmax(0,2fr) minmax(0,1fr);align-items:start;margin-top:2rem}
+@media (max-width:900px){.topgrid{grid-template-columns:1fr}}
+.emblem-card{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);padding:1.6rem;backdrop-filter:blur(24px) saturate(1.6);position:relative;isolation:isolate;overflow:hidden}
+.emblem-card::before{content:"";position:absolute;inset:-20%;z-index:-1;background:conic-gradient(from var(--ang),var(--a),var(--b),var(--c),var(--a));filter:blur(70px);opacity:.28;mix-blend-mode:plus-lighter;animation:spinang 14s linear infinite}
+.emblem{display:block;margin:0 auto;width:min(300px,70%)}
+.emblem .ring{fill:none;stroke:url(#hg);stroke-width:1.4}
+.emblem .node{fill:var(--ink)}
+.emblem .core{fill:none;stroke:var(--a);stroke-width:2}
+.emblem .orbitg{transform-box:fill-box;transform-origin:center;animation:spin 9s linear infinite}
+.emblem .orbitg2{transform-box:fill-box;transform-origin:center;animation:spin 15s linear infinite reverse}
+.emblem .pulse2{transform-box:fill-box;transform-origin:center;animation:pulse 2.2s ease-in-out infinite}
+.emblem text{font-family:var(--fd);font-size:3.2px;letter-spacing:.4px;fill:var(--muted)}
+.legend{display:flex;flex-wrap:wrap;gap:.55rem;justify-content:center;margin-top:1rem}
+.lchip{font-family:var(--fd);font-size:.72rem;text-transform:uppercase;letter-spacing:.08em;border:1px solid var(--line);border-radius:99px;padding:.3rem .7rem;color:var(--muted);transition:.35s;cursor:default}
+.wiring{margin-top:2.6rem}
+.wiring h2,.cluster h2{font-family:var(--fd);font-size:clamp(1.3rem,3vw,1.9rem);margin:0 0 .3rem;text-wrap:balance}
+.wiring p,.cluster>p{color:var(--muted);margin:.2rem 0 1.2rem;font-family:var(--fd);font-size:.9rem}
+.map{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);padding:1rem;backdrop-filter:blur(18px)}
+.map svg{width:100%;height:auto;display:block}
+.map .edge{stroke:color-mix(in oklab,var(--b) 55%,transparent);stroke-width:1.1;fill:none;stroke-dasharray:5 7;animation:dashmove 2.2s linear infinite}
+.map .nlabel{font-family:var(--fd);font-size:6.5px;fill:var(--muted)}
+.map a circle{fill:#0b0e22;stroke:var(--c);stroke-width:1.2;transition:.3s}
+.map a:hover circle{stroke:var(--ink);r:7}
+.clusters{display:grid;gap:2.6rem;margin-top:2.6rem}
+.cluster .grid{margin-top:.4rem}
+.hubcard{display:grid;grid-template-columns:52px 1fr;gap:0 1rem;background:var(--panel);border:1px solid var(--line);border-radius:var(--r);padding:1.2rem 1.3rem;backdrop-filter:blur(18px) saturate(1.5);position:relative;isolation:isolate;transition:.4s cubic-bezier(.2,.9,.2,1);text-decoration:none;color:inherit}
+.hubcard::before{content:"";position:absolute;inset:-1px;z-index:-1;border-radius:inherit;opacity:0;transition:.5s;background:conic-gradient(from var(--ang),var(--a),var(--b),var(--c),var(--a));filter:blur(60px);mix-blend-mode:plus-lighter}
+.hubcard:hover::before{opacity:.55}
+.hubcard:hover{transform:translateY(-4px) scale(1.015);border-color:color-mix(in oklab,var(--c) 60%,var(--line))}
+.hubcard .ic{grid-row:1/span 3;display:grid;place-items:center;width:52px;height:52px;border-radius:14px;background:color-mix(in oklab,var(--a) 14%,transparent);border:1px solid var(--line);transition:.4s}
+.hubcard .ic svg{width:26px;height:26px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round;transition:filter .45s}
+.hubcard:hover .ic{background:color-mix(in oklab,var(--c) 22%,transparent)}
+.hubcard .no{font-family:var(--fd);font-size:.7rem;letter-spacing:.14em;color:var(--muted);text-transform:uppercase}
+.hubcard h3{margin:.15rem 0 .4rem;font-family:var(--fd);font-size:1.06rem;line-height:1.25;text-wrap:balance}
+.hubcard h3 span.t{background:linear-gradient(90deg,var(--c),var(--c)) 0 100%/0 2px no-repeat;transition:background-size .4s}
+.hubcard:hover h3 span.t{background-size:100% 2px}
+.hubcard p{color:var(--muted);font-size:.88rem;margin:0 0 .6rem}
+.hubcard .ctx{grid-column:2}
+.hubcard .ctx a{margin-right:.4rem}
+.jump{display:flex;flex-wrap:wrap;gap:.45rem;margin-top:1.4rem}
+.jump a{font-family:var(--fd);font-size:.8rem;border:1px solid var(--line);border-radius:12px;padding:.35rem .6rem;color:var(--muted);text-decoration:none;transition:.3s;background:var(--panel)}
+.jump a b{color:var(--c);margin-right:.3rem}
+.jump a:hover{color:var(--ink);border-color:var(--c);transform:translateY(-2px)}
+.flowbar{margin-top:2.6rem;overflow:hidden;border:1px dashed var(--line);border-radius:var(--r);padding:.9rem 0;background:color-mix(in oklab,var(--bg) 60%,transparent)}
+.flow{display:flex;gap:3rem;width:max-content;animation:marq 30s linear infinite;font-family:var(--fd);font-size:.85rem;color:var(--muted);white-space:nowrap}
+.flow span b{color:var(--b)}
+.howto{margin-top:2.6rem;display:grid;gap:1.2rem;grid-template-columns:repeat(auto-fit,minmax(min(260px,100%),1fr))}
+.howto article{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);padding:1.2rem 1.3rem;backdrop-filter:blur(16px)}
+.howto h3{margin:.5rem 0 .4rem;font-family:var(--fd);font-size:1rem}
+.howto p{margin:0;color:var(--muted);font-size:.86rem}
+.howto .ic{width:38px;height:38px;border-radius:12px;display:grid;place-items:center;background:color-mix(in oklab,var(--b) 16%,transparent);border:1px solid var(--line)}
+.howto .ic svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.badge{display:inline-flex;align-items:center;gap:.4rem;font-family:var(--fd);font-size:.72rem;text-transform:uppercase;letter-spacing:.08em;color:var(--muted)}
+.badge svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+@media (prefers-reduced-motion:reduce){.flow,.emblem .orbitg,.emblem .orbitg2,.map .edge{animation:none}}
+
+/* ===== hover2026: negative-color v2 + rightward glide (latest CSS) ===== */
+@property --nx{syntax:"<number>";inherits:false;initial-value:0}
+@property --skew{syntax:"<angle>";inherits:false;initial-value:0deg}
+a.xlink,a.rel,a.pager a,.toc a,.badge,.negchip,.hubcard,.jump a,.lchip,.map a circle,article svg,aside svg{transition:translate .4s cubic-bezier(.34,1.56,.64,1),rotate .4s ease,scale .4s ease,filter .45s ease,color .3s,background-size .45s cubic-bezier(.2,.9,.2,1)}
+a.xlink:hover,a.rel:hover,.toc a:hover,.pager a:hover{translate:7px 0;rotate:-1deg}
+.badge:hover,.negchip:hover{translate:9px 0;rotate:-2deg}
+.hubcard:hover,.jump a:hover,.lchip:hover{translate:10px 0;rotate:.8deg}
+.map a:hover{translate:6px 0}
+a:hover svg,.hubcard:hover .ic svg,.jump a:hover svg{animation-duration:.45s!important;scale:1.18;rotate:6deg}
+a.xlink::after{content:"→";display:inline-block;translate:0 -1px;opacity:calc(var(--nx,0));margin-inline-start:calc(var(--nx,0)*.35em);transition:--nx .4s ease,color .3s;text-decoration:none}
+a.xlink:hover::after{--nx:1;color:var(--c)}
+@supports (transition-behavior:allow-discrete){a.xlink::after{transition-behavior:allow-discrete}}
+a:hover>.ic svg,a:hover svg:first-of-type{stroke-dashoffset:0!important}
+
+/* TCARD-TITLES v1 */
+/* ===================== TITLE CARDS (h2/h3 -> CSS cards) ===================== */
+@property --tc-a { syntax:"<angle>"; inherits:false; initial-value:0deg }
+@property --tc-x { syntax:"<percentage>"; inherits:false; initial-value:0% }
+.tcard{ position:relative; isolation:isolate; display:block; width:fit-content;
+  max-width:100%; margin:0 auto 1.4rem; padding:.85rem 1.5rem; border-radius:16px;
+  background:color-mix(in oklab,#171325 82%,transparent);
+  backdrop-filter:blur(14px) saturate(1.5);
+  border:1px solid color-mix(in oklab,var(--ink) 12%,transparent);
+  box-shadow:0 10px 30px -18px #000, inset 0 0 0 1px color-mix(in oklab,var(--b) 10%,transparent);
+  transition:translate .35s cubic-bezier(.2,.9,.3,1.4), rotate .35s ease, scale .35s ease;
+}
+/* animated gradient ring drawn from registered custom angle */
+.tcard::before{ content:""; position:absolute; inset:-1.5px; z-index:-1; border-radius:inherit;
+  background:conic-gradient(from var(--tc-a),var(--a),var(--b),var(--c),var(--a));
+  filter:blur(1px); opacity:.55; animation:tspin 6s linear infinite; }
+.tcard::after{ content:""; position:absolute; inset:0; z-index:-1; border-radius:inherit;
+  background:linear-gradient(115deg at var(--tc-x) 50%,
+    transparent 0 42%, color-mix(in oklab,#fff 26%,transparent) 50%, transparent 58% 100%);
+  animation:tsheen 4.5s ease-in-out infinite; opacity:0; transition:opacity .3s }
+@keyframes tspin{ to{ --tc-a:360deg } }
+@keyframes tsheen{ 0%{--tc-x:0%} 55%,100%{--tc-x:140%} }
+.tcard .tt{ font:inherit; }
+/* negative colour on hover + glide a few degrees right */
+.tcard:hover{ filter:invert(1) hue-rotate(180deg) contrast(1.3) saturate(1.5);
+  mix-blend-mode:difference; translate:12px 0; rotate:1.4deg; scale:1.03 }
+.tcard:hover::after{ opacity:1 }
+.tcard.cat{ text-align:center }
+.tcard.cat .tt{ display:inline-block; font-size:clamp(1.15rem,2.6vw,1.7rem); letter-spacing:-.01em;
+  background:linear-gradient(100deg,var(--a),var(--b) 55%,var(--c));
+  -webkit-background-clip:text; background-clip:text; color:transparent }
+.tcard.post{ margin:0 0 .55rem; padding:.55rem 1rem; width:100% }
+.tcard.post .tt{ font-size:1.02rem; line-height:1.3; text-wrap:balance; color:var(--ink) }
+.badge{ display:inline-flex; gap:.35ch; margin-left:.6rem; vertical-align:.12em;
+  font:700 .62rem/1 var(--fd,inherit); letter-spacing:.08em; text-transform:uppercase;
+  color:#0b0916; background:linear-gradient(100deg,var(--b),var(--c));
+  padding:.32em .6em; border-radius:99px; white-space:nowrap }
+@container (max-width:520px){ .tcard{ width:100% } .tcard.cat{ margin-inline:auto } }
+@media (prefers-reduced-motion:reduce){ .tcard::before,.tcard::after{ animation:none } }
+
+</style></head>
+<body><div class="progress"></div><i class="blob b1"></i><i class="blob b2"></i><i class="blob b3"></i><div class="grain"></div>
+<header class="site"><a class="brand" href="index.html"><svg viewBox="0 0 24 24"><path class="draw" d="M12 2 3 7l9 5 9-5-9-5zM3 12l9 5 9-5M3 17l9 5 9-5"/></svg><span>THE CONTROL FILES</span></a>
+<span style="margin-left:auto" class="meta">HUB · 22 files wired by context · hover goes <span class="negchip">negative</span></span></header>
+<main class="wrap">
+<div class="topgrid">
+<section class="hero" style="text-align:left;padding-top:2.4rem">
+<h1>The Control<br>Files · Hub</h1>
+<p>One cursed HTML archive, decompiled into <b>twenty-two standalone dispatches</b> on coercive systems, environmental gaslighting, liminal architecture and digital power — then rewired: every file links to its semantic neighbours, every element flips to its <span class="negchip">negative colour</span> on hover, every badge carries an animated SVG rig.</p>
+<div class="stats"><span><b>22</b> HTML files</span><span><b>51</b> unique context edges</span><span><b>66</b> rail links</span><span><b>13</b> icon rigs</span><span><b>0</b> broken links</span></div>
+<div class="jump"><a href="post-01.html"><b>01</b>Do You Want to Go to &quot;Ele Hand&quot;?…</a><a href="post-02.html"><b>02</b>Why Venues Ban Cameras – And Why…</a><a href="post-03.html"><b>03</b>Confluence&#x27;s &quot;Add Content&quot; Contr…</a><a href="post-04.html"><b>04</b>When Elevators Glitch Repeatedly…</a><a href="post-05.html"><b>05</b>When You Press DOWN and the Lift…</a><a href="post-06.html"><b>06</b>&quot;Under Construction&quot; Isn&#x27;t a Sta…</a><a href="post-07.html"><b>07</b>&quot;White Glove Security&quot; Isn&#x27;t Pre…</a><a href="post-08.html"><b>08</b>Constant Drilling Upstairs Isn&#x27;t…</a><a href="post-09.html"><b>09</b>The Desire for a &quot;Secret Exit&quot; I…</a><a href="post-10.html"><b>10</b>Black Residue in Your AC Isn&#x27;t J…</a><a href="post-11.html"><b>11</b>The Service Elevator Never Arriv…</a><a href="post-12.html"><b>12</b>The CCTV Light That Never Turns …</a><a href="post-13.html"><b>13</b>Mandatory Fun Is Coercion Wearin…</a><a href="post-14.html"><b>14</b>Your Landlord&#x27;s &quot;Routine Inspect…</a><a href="post-15.html"><b>15</b>The Loading Screen Lies: Progres…</a><a href="post-16.html"><b>16</b>Open-Plan Offices Aren&#x27;t Open — …</a><a href="post-17.html"><b>17</b>The Intercom That Only Answers I…</a><a href="post-18.html"><b>18</b>The Hotel Minibar Is a Contract …</a><a href="post-19.html"><b>19</b>Why Every Emergency Exit Sign Gl…</a><a href="post-20.html"><b>20</b>The Group Chat Admin Who Silence…</a><a href="post-21.html"><b>21</b>Parking Garages Count Cars Bette…</a><a href="post-22.html"><b>22</b>The Gym Mirror That Flatters Is …</a></div>
+</section>
+<aside class="emblem-card">
+<svg class="emblem" viewBox="0 0 120 120" role="img" aria-label="Hub network emblem: 22 nodes orbiting a core">
+<defs><linearGradient id="hg" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0" stop-color="var(--a)"/><stop offset=".5" stop-color="var(--b)"/><stop offset="1" stop-color="var(--c)"/></linearGradient></defs>
+<circle class="ring" cx="60" cy="60" r="52"/>
+<g class="orbitg"><circle class="node pulse2" cx="112.0" cy="60.0" r="1.7"/><circle class="node pulse2" cx="109.9" cy="74.7" r="1.7"/><circle class="node pulse2" cx="103.7" cy="88.1" r="1.7"/><circle class="node pulse2" cx="94.1" cy="99.3" r="1.7"/><circle class="node pulse2" cx="81.6" cy="107.3" r="1.7"/><circle class="node pulse2" cx="67.4" cy="111.5" r="1.7"/><circle class="node pulse2" cx="52.6" cy="111.5" r="1.7"/><circle class="node pulse2" cx="38.4" cy="107.3" r="1.7"/><circle class="node pulse2" cx="25.9" cy="99.3" r="1.7"/><circle class="node pulse2" cx="16.3" cy="88.1" r="1.7"/><circle class="node pulse2" cx="10.1" cy="74.7" r="1.7"/><circle class="node pulse2" cx="8.0" cy="60.0" r="1.7"/><circle class="node pulse2" cx="10.1" cy="45.3" r="1.7"/><circle class="node pulse2" cx="16.3" cy="31.9" r="1.7"/><circle class="node pulse2" cx="25.9" cy="20.7" r="1.7"/><circle class="node pulse2" cx="38.4" cy="12.7" r="1.7"/><circle class="node pulse2" cx="52.6" cy="8.5" r="1.7"/><circle class="node pulse2" cx="67.4" cy="8.5" r="1.7"/><circle class="node pulse2" cx="81.6" cy="12.7" r="1.7"/><circle class="node pulse2" cx="94.1" cy="20.7" r="1.7"/><circle class="node pulse2" cx="103.7" cy="31.9" r="1.7"/><circle class="node pulse2" cx="109.9" cy="45.3" r="1.7"/></g>
+<g class="orbitg2"><circle class="ring" cx="60" cy="60" r="34" stroke-dasharray="3 5"/></g>
+<path class="core draw" d="M60 40 46 60l14 20 14-20-14-20z"/>
+<circle class="node pulse2" cx="60" cy="60" r="4"/>
+<text x="60" y="112" text-anchor="middle">22 NODES · 1 CORE · ZERO BROKEN LINKS</text>
+</svg>
+<div class="legend"><span class="lchip">Coercive Systems<span class="badge">2 min · #12</span><span class="lchip">Coercive Systems<span class="badge">2 min · #13</span><span class="lchip">Coercive Systems<span class="badge">2 min · #17</span><span class="lchip">Coercive Systems<span class="badge">2 min · #18</span><span class="lchip">Coercive Systems<span class="badge">2 min · #20</span><span class="lchip">Coercive Systems<span class="badge">2 min · #21</span><span class="lchip">Coercive Systems<span class="badge">5 min · #06</span><span class="lchip">Coercive Systems<span class="badge">6 min · #02</span><span class="lchip">Coercive Systems<span class="badge">6 min · #09</span><span class="lchip">Digital Power<span class="badge">2 min · #15</span><span class="lchip">Digital Power<span class="badge">4 min · #03</span><span class="lchip">Domestic Rights<span class="badge">2 min · #14</span><span class="lchip">Environmental Gaslighting<span class="badge">2 min · #11</span><span class="lchip">Environmental Gaslighting<span class="badge">2 min · #19</span><span class="lchip">Environmental Gaslighting<span class="badge">5 min · #04</span><span class="lchip">Environmental Gaslighting<span class="badge">5 min · #05</span><span class="lchip">Environmental Gaslighting<span class="badge">5 min · #07</span><span class="lchip">Environmental Gaslighting<span class="badge">5 min · #10</span><span class="lchip">Environmental Gaslighting<span class="badge">6 min · #08</span><span class="lchip">Language &amp; Culture<span class="badge">10 min · #01</span><span class="lchip">Liminal Spaces<span class="badge">2 min · #16</span><span class="lchip">Liminal Spaces<span class="badge">2 min · #22</span></div>
+</aside>
+</div>
+
+<section class="wiring">
+<h2><span class="tcard cat" role="presentation"><span class="tt">How the files are interconnected</span></span></h2>
+<p>Every curve below is a real contextual link that exists in the dispatch rails — drawn between semantically related files (lifts ↔ AC ↔ drilling, cameras ↔ white-glove ↔ CCTV, Confluence ↔ group chats ↔ loading screens). Nodes are clickable.</p>
+<div class="map"><svg viewBox="0 0 900 560" role="img" aria-label="Map of all contextual links between the 22 dispatches (51 unique edges)"><path class="edge" d="M450 40 Q450 220 559 50"/><path class="edge" d="M450 40 Q450 220 743 123"/><path class="edge" d="M450 40 Q450 220 834 246"/><path class="edge" d="M559 50 Q477 222 660 78"/><path class="edge" d="M559 50 Q477 222 743 123"/><path class="edge" d="M559 50 Q477 222 834 314"/><path class="edge" d="M559 50 Q477 222 803 380"/><path class="edge" d="M660 78 Q502 230 743 123"/><path class="edge" d="M660 78 Q502 230 834 314"/><path class="edge" d="M743 123 Q523 241 803 180"/><path class="edge" d="M743 123 Q523 241 803 380"/><path class="edge" d="M743 123 Q523 241 660 482"/><path class="edge" d="M803 180 Q538 255 803 380"/><path class="edge" d="M803 180 Q538 255 660 482"/><path class="edge" d="M834 246 Q546 271 834 314"/><path class="edge" d="M834 246 Q546 271 803 380"/><path class="edge" d="M834 246 Q546 271 743 437"/><path class="edge" d="M834 314 Q546 289 803 380"/><path class="edge" d="M834 314 Q546 289 743 437"/><path class="edge" d="M803 380 Q538 305 743 437"/><path class="edge" d="M803 380 Q538 305 660 482"/><path class="edge" d="M559 510 Q477 338 450 520"/><path class="edge" d="M559 510 Q477 338 341 510"/><path class="edge" d="M559 510 Q477 338 240 482"/><path class="edge" d="M559 510 Q477 338 66 314"/><path class="edge" d="M559 510 Q477 338 66 246"/><path class="edge" d="M559 510 Q477 338 157 123"/><path class="edge" d="M450 520 Q450 340 66 314"/><path class="edge" d="M450 520 Q450 340 341 50"/><path class="edge" d="M341 510 Q423 338 157 437"/><path class="edge" d="M341 510 Q423 338 97 380"/><path class="edge" d="M341 510 Q423 338 66 314"/><path class="edge" d="M341 510 Q423 338 66 246"/><path class="edge" d="M341 510 Q423 338 97 180"/><path class="edge" d="M341 510 Q423 338 240 78"/><path class="edge" d="M341 510 Q423 338 341 50"/><path class="edge" d="M240 482 Q398 330 66 314"/><path class="edge" d="M240 482 Q398 330 66 246"/><path class="edge" d="M157 437 Q377 319 66 314"/><path class="edge" d="M157 437 Q377 319 341 50"/><path class="edge" d="M97 380 Q362 305 66 314"/><path class="edge" d="M97 380 Q362 305 341 50"/><path class="edge" d="M66 314 Q354 289 66 246"/><path class="edge" d="M66 314 Q354 289 97 180"/><path class="edge" d="M66 314 Q354 289 157 123"/><path class="edge" d="M66 314 Q354 289 240 78"/><path class="edge" d="M66 314 Q354 289 341 50"/><path class="edge" d="M66 246 Q354 271 341 50"/><path class="edge" d="M97 180 Q362 255 341 50"/><path class="edge" d="M157 123 Q377 241 341 50"/><path class="edge" d="M240 78 Q398 230 341 50"/><a href="post-01.html"><circle cx="450" cy="40" r="5.5"/><text class="nlabel" x="450" y="31" text-anchor="middle">01</text></a><a href="post-02.html"><circle cx="559" cy="50" r="5.5"/><text class="nlabel" x="559" y="41" text-anchor="middle">02</text></a><a href="post-03.html"><circle cx="660" cy="78" r="5.5"/><text class="nlabel" x="660" y="69" text-anchor="middle">03</text></a><a href="post-04.html"><circle cx="743" cy="123" r="5.5"/><text class="nlabel" x="743" y="114" text-anchor="middle">04</text></a><a href="post-05.html"><circle cx="803" cy="180" r="5.5"/><text class="nlabel" x="803" y="171" text-anchor="middle">05</text></a><a href="post-06.html"><circle cx="834" cy="246" r="5.5"/><text class="nlabel" x="834" y="237" text-anchor="middle">06</text></a><a href="post-07.html"><circle cx="834" cy="314" r="5.5"/><text class="nlabel" x="834" y="305" text-anchor="middle">07</text></a><a href="post-08.html"><circle cx="803" cy="380" r="5.5"/><text class="nlabel" x="803" y="371" text-anchor="middle">08</text></a><a href="post-09.html"><circle cx="743" cy="437" r="5.5"/><text class="nlabel" x="743" y="428" text-anchor="middle">09</text></a><a href="post-10.html"><circle cx="660" cy="482" r="5.5"/><text class="nlabel" x="660" y="473" text-anchor="middle">10</text></a><a href="post-11.html"><circle cx="559" cy="510" r="5.5"/><text class="nlabel" x="559" y="501" text-anchor="middle">11</text></a><a href="post-12.html"><circle cx="450" cy="520" r="5.5"/><text class="nlabel" x="450" y="511" text-anchor="middle">12</text></a><a href="post-13.html"><circle cx="341" cy="510" r="5.5"/><text class="nlabel" x="341" y="501" text-anchor="middle">13</text></a><a href="post-14.html"><circle cx="240" cy="482" r="5.5"/><text class="nlabel" x="240" y="473" text-anchor="middle">14</text></a><a href="post-15.html"><circle cx="157" cy="437" r="5.5"/><text class="nlabel" x="157" y="428" text-anchor="middle">15</text></a><a href="post-16.html"><circle cx="97" cy="380" r="5.5"/><text class="nlabel" x="97" y="371" text-anchor="middle">16</text></a><a href="post-17.html"><circle cx="66" cy="314" r="5.5"/><text class="nlabel" x="66" y="305" text-anchor="middle">17</text></a><a href="post-18.html"><circle cx="66" cy="246" r="5.5"/><text class="nlabel" x="66" y="237" text-anchor="middle">18</text></a><a href="post-19.html"><circle cx="97" cy="180" r="5.5"/><text class="nlabel" x="97" y="171" text-anchor="middle">19</text></a><a href="post-20.html"><circle cx="157" cy="123" r="5.5"/><text class="nlabel" x="157" y="114" text-anchor="middle">20</text></a><a href="post-21.html"><circle cx="240" cy="78" r="5.5"/><text class="nlabel" x="240" y="69" text-anchor="middle">21</text></a><a href="post-22.html"><circle cx="341" cy="50" r="5.5"/><text class="nlabel" x="341" y="41" text-anchor="middle">22</text></a></svg></div>
+</section>
+
+<div class="clusters"><section class="cluster"><h2><span class="tcard cat" role="presentation"><span class="tt">Language &amp; Culture</span><span class="badge">10 min · #01</span></span></h2>
+<p>1 dispatch — click any card to open it; hover flips its icon rig to the negative spectrum.</p>
+<div class="grid"><div class="hubcard" data-target="post-01.html">
+  <span class="ic"><svg viewBox="0 0 24 24"><rect class="float" x="9" y="3" width="6" height="11" rx="3"/><path class="draw" d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg> Language &amp; Culture</span>
+  <span class="no">Dispatch #01 · 10 min read · Language &amp; Culture<span class="badge">10 min · #01</span>
+  </span><h3><span class="tcard post" role="presentation"><span class="tt">Do You Want to Go to &quot;Ele Hand&quot;? The Thai English Accent, Explained Through a Bangkok Love Story</span></span></h3>
+  <p>A love story, a language lesson, and everything you need to know about the Thai English accent.</p>
+  <div class="ctx"><strong>Context links →</strong> <a class="xlink" href="post-02.html">Why Venues Ban Cameras – And Why Enf…</div><a class="xlink" href="post-04.html">When Elevators Glitch Repeatedly, It…</a><a class="xlink" href="post-06.html">&quot;Under Construction&quot; Isn&#x27;t a Status …</a></div>
+</a></div></section><section class="cluster"><h2><span class="tcard cat" role="presentation"><span class="tt">Coercive Systems</span><span class="badge">6 min · #02</span></span></h2>
+<p>1 dispatch — click any card to open it; hover flips its icon rig to the negative spectrum.</p>
+<div class="grid"><div class="hubcard" data-target="post-02.html">
+  <span class="ic"><svg viewBox="0 0 24 24"><path class="draw" d="M2 12s3.5-6 10-6 10 6 10 6-3.5 6-10 6S2 12 2 12z"/><circle class="pulse" cx="12" cy="12" r="2.6"/></svg> Coercive Systems</span>
+  <span class="no">Dispatch #02 · 6 min read · Coercive Systems<span class="badge">6 min · #02</span>
+  </span><h3><span class="tcard post" role="presentation"><span class="tt">Why Venues Ban Cameras – And Why Enforcement Feels So Personal</span></span></h3>
+  <p>Why do venues ban cameras — and why does enforcement feel so personal?</p>
+  <div class="ctx"><strong>Context links →</strong> <a class="xlink" href="post-07.html">&quot;White Glove Security&quot; Isn&#x27;t Premium…</div><a class="xlink" href="post-04.html">When Elevators Glitch Repeatedly, It…</a><a class="xlink" href="post-08.html">Constant Drilling Upstairs Isn&#x27;t Jus…</a></div>
+</a></div></section><section class="cluster"><h2><span class="tcard cat" role="presentation"><span class="tt">Digital Power</span><span class="badge">4 min · #03</span></span></h2>
+<p>1 dispatch — click any card to open it; hover flips its icon rig to the negative spectrum.</p>
+<div class="grid"><div class="hubcard" data-target="post-03.html">
+  <span class="ic"><svg viewBox="0 0 24 24"><path class="dash" d="M2 9a15 15 0 0 1 20 0M5.5 12.5a10 10 0 0 1 13 0M9 16a5 5 0 0 1 6 0"/><circle class="blink" cx="12" cy="19.5" r="1.2"/></svg> Digital Power</span>
+  <span class="no">Dispatch #03 · 4 min read · Digital Power<span class="badge">4 min · #03</span>
+  </span><h3><span class="tcard post" role="presentation"><span class="tt">Confluence&#x27;s &quot;Add Content&quot; Controls Aren&#x27;t Just a Feature — They&#x27;re an Architecture of Organizational Power</span></span></h3>
+  <p>Confluence&#x27;s &quot;Add Content&quot; controls aren&#x27;t just a feature — they&#x27;re an architecture of organizational power.</p>
+  <div class="ctx"><strong>Context links →</strong> <a class="xlink" href="post-07.html">&quot;White Glove Security&quot; Isn&#x27;t Premium…</div><a class="xlink" href="post-04.html">When Elevators Glitch Repeatedly, It…</a><a class="xlink" href="post-02.html">Why Venues Ban Cameras – And Why Enf…</a></div>
+</a></div></section><section class="cluster"><h2><span class="tcard cat" role="presentation"><span class="tt">Environmental Gaslighting</span><span class="badge">5 min · #04</span></span></h2>
+<p>1 dispatch — click any card to open it; hover flips its icon rig to the negative spectrum.</p>
+<div class="grid"><div class="hubcard" data-target="post-04.html">
+  <span class="ic"><svg viewBox="0 0 24 24"><g class="spin" style="transform-origin:12px 12px"><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M19.1 4.9L17 7M7 17l-2.1 2.1"/><circle cx="12" cy="12" r="4.2"/></g></svg> Environmental Gaslighting</span>
+  <span class="no">Dispatch #04 · 5 min read · Environmental Gaslighting<span class="badge">5 min · #04</span>
+  </span><h3><span class="tcard post" role="presentation"><span class="tt">When Elevators Glitch Repeatedly, It&#x27;s Not Just Maintenance — It&#x27;s Environmental Control</span></span></h3>
+  <p>When elevators glitch repeatedly, it&#x27;s not just a maintenance problem — it&#x27;s an environmental control tactic.</p>
+  <div class="ctx"><strong>Context links →</strong> <a class="xlink" href="post-10.html">Black Residue in Your AC Isn&#x27;t Just …</div><a class="xlink" href="post-08.html">Constant Drilling Upstairs Isn&#x27;t Jus…</a><a class="xlink" href="post-05.html">When You Press DOWN and the Lift Goe…</a></div>
+</a></div></section><section class="cluster"><h2><span class="tcard cat" role="presentation"><span class="tt">Environmental Gaslighting</span><span class="badge">5 min · #05</span></span></h2>
+<p>1 dispatch — click any card to open it; hover flips its icon rig to the negative spectrum.</p>
+<div class="grid"><div class="hubcard" data-target="post-05.html">
+  <span class="ic"><svg viewBox="0 0 24 24"><g class="spin" style="transform-origin:12px 12px"><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M19.1 4.9L17 7M7 17l-2.1 2.1"/><circle cx="12" cy="12" r="4.2"/></g></svg> Environmental Gaslighting</span>
+  <span class="no">Dispatch #05 · 5 min read · Environmental Gaslighting<span class="badge">5 min · #05</span>
+  </span><h3><span class="tcard post" role="presentation"><span class="tt">When You Press DOWN and the Lift Goes UP, It&#x27;s Not Just a Wiring Fault — It&#x27;s Embodied Gaslighting</span></span></h3>
+  <p>When you press DOWN and the lift goes UP, it&#x27;s not just a wiring fault — it&#x27;s embodied gaslighting.</p>
+  <div class="ctx"><strong>Context links →</strong> <a class="xlink" href="post-04.html">When Elevators Glitch Repeatedly, It…</div><a class="xlink" href="post-10.html">Black Residue in Your AC Isn&#x27;t Just …</a><a class="xlink" href="post-08.html">Constant Drilling Upstairs Isn&#x27;t Jus…</a></div>
+</a></div></section><section class="cluster"><h2><span class="tcard cat" role="presentation"><span class="tt">Coercive Systems</span><span class="badge">5 min · #06</span></span></h2>
+<p>1 dispatch — click any card to open it; hover flips its icon rig to the negative spectrum.</p>
+<div class="grid"><div class="hubcard" data-target="post-06.html">
+  <span class="ic"><svg viewBox="0 0 24 24"><path class="sway" style="transform-origin:4px 12px" d="M4 21V3h12v18zM4 21h16"/><circle class="pulse" cx="13" cy="12" r="1.1"/></svg> Coercive Systems</span>
+  <span class="no">Dispatch #06 · 5 min read · Coercive Systems<span class="badge">5 min · #06</span>
+  </span><h3><span class="tcard post" role="presentation"><span class="tt">&quot;Under Construction&quot; Isn&#x27;t a Status — It&#x27;s a Power Dynamic</span></span></h3>
+  <p>We&#x27;ve all encountered it: the website that&#x27;s been &quot;coming soon&quot; for three years, the relationship perpetually &quot;working on things,&quot; the workplace refor</p>
+  <div class="ctx"><strong>Context links →</strong> <a class="xlink" href="post-08.html">Constant Drilling Upstairs Isn&#x27;t Jus…</div><a class="xlink" href="post-09.html">The Desire for a &quot;Secret Exit&quot; Isn&#x27;t…</a><a class="xlink" href="post-07.html">&quot;White Glove Security&quot; Isn&#x27;t Premium…</a></div>
+</a></div></section><section class="cluster"><h2><span class="tcard cat" role="presentation"><span class="tt">Environmental Gaslighting</span><span class="badge">5 min · #07</span></span></h2>
+<p>1 dispatch — click any card to open it; hover flips its icon rig to the negative spectrum.</p>
+<div class="grid"><div class="hubcard" data-target="post-07.html">
+  <span class="ic"><svg viewBox="0 0 24 24"><path class="shake" d="M12 3 2 20h20L12 3z"/><path class="blink" d="M12 10v4M12 17v.5"/></svg> Environmental Gaslighting</span>
+  <span class="no">Dispatch #07 · 5 min read · Environmental Gaslighting<span class="badge">5 min · #07</span>
+  </span><h3><span class="tcard post" role="presentation"><span class="tt">&quot;White Glove Security&quot; Isn&#x27;t Premium Protection — It&#x27;s Aesthetized Control</span></span></h3>
+  <p>&quot;White glove security&quot; isn&#x27;t premium protection — it&#x27;s aesthetized control.</p>
+  <div class="ctx"><strong>Context links →</strong> <a class="xlink" href="post-02.html">Why Venues Ban Cameras – And Why Enf…</div><a class="xlink" href="post-06.html">&quot;Under Construction&quot; Isn&#x27;t a Status …</a><a class="xlink" href="post-08.html">Constant Drilling Upstairs Isn&#x27;t Jus…</a></div>
+</a></div></section><section class="cluster"><h2><span class="tcard cat" role="presentation"><span class="tt">Environmental Gaslighting</span><span class="badge">6 min · #08</span></span></h2>
+<p>1 dispatch — click any card to open it; hover flips its icon rig to the negative spectrum.</p>
+<div class="grid"><div class="hubcard" data-target="post-08.html">
+  <span class="ic"><svg viewBox="0 0 24 24"><path class="dash" d="M2 8c2-2 4-2 6 0s4 2 6 0 4-2 6 0M2 14c2-2 4-2 6 0s4 2 6 0 4-2 6 0M2 20c2-2 4-2 6 0s4 2 6 0 4-2 6 0"/></svg> Environmental Gaslighting</span>
+  <span class="no">Dispatch #08 · 6 min read · Environmental Gaslighting<span class="badge">6 min · #08</span>
+  </span><h3><span class="tcard post" role="presentation"><span class="tt">Constant Drilling Upstairs Isn&#x27;t Just Noise — It&#x27;s Acoustic Territorial Control</span></span></h3>
+  <p>Constant drilling upstairs isn&#x27;t just noise — it&#x27;s acoustic territorial control.</p>
+  <div class="ctx"><strong>Context links →</strong> <a class="xlink" href="post-10.html">Black Residue in Your AC Isn&#x27;t Just …</div><a class="xlink" href="post-04.html">When Elevators Glitch Repeatedly, It…</a><a class="xlink" href="post-06.html">&quot;Under Construction&quot; Isn&#x27;t a Status …</a></div>
+</a></div></section><section class="cluster"><h2><span class="tcard cat" role="presentation"><span class="tt">Coercive Systems</span><span class="badge">6 min · #09</span></span></h2>
+<p>1 dispatch — click any card to open it; hover flips its icon rig to the negative spectrum.</p>
+<div class="grid"><div class="hubcard" data-target="post-09.html">
+  <span class="ic"><svg viewBox="0 0 24 24"><path class="sway" style="transform-origin:4px 12px" d="M4 21V3h12v18zM4 21h16"/><circle class="pulse" cx="13" cy="12" r="1.1"/></svg> Coercive Systems</span>
+  <span class="no">Dispatch #09 · 6 min read · Coercive Systems<span class="badge">6 min · #09</span>
+  </span><h3><span class="tcard post" role="presentation"><span class="tt">The Desire for a &quot;Secret Exit&quot; Isn&#x27;t About Architecture — It&#x27;s About Autonomy Under Threat</span></span></h3>
+  <p>The desire for a &quot;secret exit&quot; isn&#x27;t about architecture — it&#x27;s about autonomy under threat.</p>
+  <div class="ctx"><strong>Context links →</strong> <a class="xlink" href="post-06.html">&quot;Under Construction&quot; Isn&#x27;t a Status …</div><a class="xlink" href="post-07.html">&quot;White Glove Security&quot; Isn&#x27;t Premium…</a><a class="xlink" href="post-08.html">Constant Drilling Upstairs Isn&#x27;t Jus…</a></div>
+</a></div></section><section class="cluster"><h2><span class="tcard cat" role="presentation"><span class="tt">Environmental Gaslighting</span><span class="badge">5 min · #10</span></span></h2>
+<p>1 dispatch — click any card to open it; hover flips its icon rig to the negative spectrum.</p>
+<div class="grid"><div class="hubcard" data-target="post-10.html">
+  <span class="ic"><svg viewBox="0 0 24 24"><path class="shake" d="M12 3 2 20h20L12 3z"/><path class="blink" d="M12 10v4M12 17v.5"/></svg> Environmental Gaslighting</span>
+  <span class="no">Dispatch #10 · 5 min read · Environmental Gaslighting<span class="badge">5 min · #10</span>
+  </span><h3><span class="tcard post" role="presentation"><span class="tt">Black Residue in Your AC Isn&#x27;t Just Dirt — It&#x27;s Embodied Institutional Gaslighting</span></span></h3>
+  <p>Black residue in your AC isn&#x27;t just dirt — it&#x27;s embodied institutional gaslighting.</p>
+  <div class="ctx"><strong>Context links →</strong> <a class="xlink" href="post-08.html">Constant Drilling Upstairs Isn&#x27;t Jus…</div><a class="xlink" href="post-04.html">When Elevators Glitch Repeatedly, It…</a><a class="xlink" href="post-05.html">When You Press DOWN and the Lift Goe…</a></div>
+</a></div></section><section class="cluster"><h2><span class="tcard cat" role="presentation"><span class="tt">Environmental Gaslighting</span><span class="badge">2 min · #11</span></span></h2>
+<p>1 dispatch — click any card to open it; hover flips its icon rig to the negative spectrum.</p>
+<div class="grid"><div class="hubcard" data-target="post-11.html">
+  <span class="ic"><svg viewBox="0 0 24 24"><g class="spin" style="transform-origin:12px 12px"><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M19.1 4.9L17 7M7 17l-2.1 2.1"/><circle cx="12" cy="12" r="4.2"/></g></svg> Environmental Gaslighting</span>
+  <span class="no">Dispatch #11 · 2 min read · Environmental Gaslighting<span class="badge">2 min · #11</span>
+  </span><h3><span class="tcard post" role="presentation"><span class="tt">The Service Elevator Never Arrives — It Simply Declines</span></span></h3>
+  <p>A freight lift that only answers to staff calls is a voting system built into your commute.</p>
+  <div class="ctx"><strong>Context links →</strong> <a class="xlink" href="post-17.html">The Intercom That Only Answers In On…</div><a class="xlink" href="post-13.html">Mandatory Fun Is Coercion Wearing a …</a><a class="xlink" href="post-18.html">The Hotel Minibar Is a Contract No O…</a></div>
+</a></div></section><section class="cluster"><h2><span class="tcard cat" role="presentation"><span class="tt">Coercive Systems</span><span class="badge">2 min · #12</span></span></h2>
+<p>1 dispatch — click any card to open it; hover flips its icon rig to the negative spectrum.</p>
+<div class="grid"><div class="hubcard" data-target="post-12.html">
+  <span class="ic"><svg viewBox="0 0 24 24"><path class="draw" d="M2 12s3.5-6 10-6 10 6 10 6-3.5 6-10 6S2 12 2 12z"/><circle class="pulse" cx="12" cy="12" r="2.6"/></svg> Coercive Systems</span>
+  <span class="no">Dispatch #12 · 2 min read · Coercive Systems<span class="badge">2 min · #12</span>
+  </span><h3><span class="tcard post" role="presentation"><span class="tt">The CCTV Light That Never Turns Off Is Performing Surveillance, Not Doing It</span></span></h3>
+  <p>A blinking red LED costs pennies; belief in being watched costs everyone something else entirely.</p>
+  <div class="ctx"><strong>Context links →</strong> <a class="xlink" href="post-17.html">The Intercom That Only Answers In On…</div><a class="xlink" href="post-22.html">The Gym Mirror That Flatters Is Also…</a><a class="xlink" href="post-11.html">The Service Elevator Never Arrives —…</a></div>
+</a></div></section><section class="cluster"><h2><span class="tcard cat" role="presentation"><span class="tt">Coercive Systems</span><span class="badge">2 min · #13</span></span></h2>
+<p>1 dispatch — click any card to open it; hover flips its icon rig to the negative spectrum.</p>
+<div class="grid"><div class="hubcard" data-target="post-13.html">
+  <span class="ic"><svg viewBox="0 0 24 24"><rect class="float" x="9" y="3" width="6" height="11" rx="3"/><path class="draw" d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg> Coercive Systems</span>
+  <span class="no">Dispatch #13 · 2 min read · Coercive Systems<span class="badge">2 min · #13</span>
+  </span><h3><span class="tcard post" role="presentation"><span class="tt">Mandatory Fun Is Coercion Wearing a Party Hat</span></span></h3>
+  <p>Leisure that requires attendance is not leisure — it is unpaid emotional labor with snacks.</p>
+  <div class="ctx"><strong>Context links →</strong> <a class="xlink" href="post-22.html">The Gym Mirror That Flatters Is Also…</div><a class="xlink" href="post-17.html">The Intercom That Only Answers In On…</a><a class="xlink" href="post-18.html">The Hotel Minibar Is a Contract No O…</a></div>
+</a></div></section><section class="cluster"><h2><span class="tcard cat" role="presentation"><span class="tt">Domestic Rights</span><span class="badge">2 min · #14</span></span></h2>
+<p>1 dispatch — click any card to open it; hover flips its icon rig to the negative spectrum.</p>
+<div class="grid"><div class="hubcard" data-target="post-14.html">
+  <span class="ic"><svg viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="9" rx="2"/><path class="draw" d="M8 11V7a4 4 0 0 1 8 0v4"/><circle class="pulse" cx="12" cy="15.5" r="1.3"/></svg> Domestic Rights</span>
+  <span class="no">Dispatch #14 · 2 min read · Domestic Rights<span class="badge">2 min · #14</span>
+  </span><h3><span class="tcard post" role="presentation"><span class="tt">Your Landlord&#x27;s &quot;Routine Inspection&quot; Is a Consent Question You Were Never Asked</span></span></h3>
+  <p>Twenty-four hours&#x27; notice is not permission; it is a schedule dressed as courtesy.</p>
+  <div class="ctx"><strong>Context links →</strong> <a class="xlink" href="post-17.html">The Intercom That Only Answers In On…</div><a class="xlink" href="post-18.html">The Hotel Minibar Is a Contract No O…</a><a class="xlink" href="post-11.html">The Service Elevator Never Arrives —…</a></div>
+</a></div></section><section class="cluster"><h2><span class="tcard cat" role="presentation"><span class="tt">Digital Power</span><span class="badge">2 min · #15</span></span></h2>
+<p>1 dispatch — click any card to open it; hover flips its icon rig to the negative spectrum.</p>
+<div class="grid"><div class="hubcard" data-target="post-15.html">
+  <span class="ic"><svg viewBox="0 0 24 24"><path class="shake" d="M12 3 2 20h20L12 3z"/><path class="blink" d="M12 10v4M12 17v.5"/></svg> Digital Power</span>
+  <span class="no">Dispatch #15 · 2 min read · Digital Power<span class="badge">2 min · #15</span>
+  </span><h3><span class="tcard post" role="presentation"><span class="tt">The Loading Screen Lies: Progress Bars as Organizational Gaslighting</span></span></h3>
+  <p>A bar that reaches ninety percent and waits there is teaching millions of people to distrust their own instruments.</p>
+  <div class="ctx"><strong>Context links →</strong> <a class="xlink" href="post-17.html">The Intercom That Only Answers In On…</div><a class="xlink" href="post-13.html">Mandatory Fun Is Coercion Wearing a …</a><a class="xlink" href="post-22.html">The Gym Mirror That Flatters Is Also…</a></div>
+</a></div></section><section class="cluster"><h2><span class="tcard cat" role="presentation"><span class="tt">Liminal Spaces</span><span class="badge">2 min · #16</span></span></h2>
+<p>1 dispatch — click any card to open it; hover flips its icon rig to the negative spectrum.</p>
+<div class="grid"><div class="hubcard" data-target="post-16.html">
+  <span class="ic"><svg viewBox="0 0 24 24"><path class="sway" style="transform-origin:4px 12px" d="M4 21V3h12v18zM4 21h16"/><circle class="pulse" cx="13" cy="12" r="1.1"/></svg> Liminal Spaces</span>
+  <span class="no">Dispatch #16 · 2 min read · Liminal Spaces<span class="badge">2 min · #16</span>
+  </span><h3><span class="tcard post" role="presentation"><span class="tt">Open-Plan Offices Aren&#x27;t Open — They&#x27;re Panoramic Prisons</span></span></h3>
+  <p>You cannot whisper collaboration into existence, but you can certainly monitor it into compliance.</p>
+  <div class="ctx"><strong>Context links →</strong> <a class="xlink" href="post-17.html">The Intercom That Only Answers In On…</div><a class="xlink" href="post-22.html">The Gym Mirror That Flatters Is Also…</a><a class="xlink" href="post-13.html">Mandatory Fun Is Coercion Wearing a …</a></div>
+</a></div></section><section class="cluster"><h2><span class="tcard cat" role="presentation"><span class="tt">Coercive Systems</span><span class="badge">2 min · #17</span></span></h2>
+<p>1 dispatch — click any card to open it; hover flips its icon rig to the negative spectrum.</p>
+<div class="grid"><div class="hubcard" data-target="post-17.html">
+  <span class="ic"><svg viewBox="0 0 24 24"><g class="spin" style="transform-origin:12px 12px"><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M19.1 4.9L17 7M7 17l-2.1 2.1"/><circle cx="12" cy="12" r="4.2"/></g></svg> Coercive Systems</span>
+  <span class="no">Dispatch #17 · 2 min read · Coercive Systems<span class="badge">2 min · #17</span>
+  </span><h3><span class="tcard post" role="presentation"><span class="tt">The Intercom That Only Answers In One Direction</span></span></h3>
+  <p>A building that lets the lobby speak but never lets residents reply has chosen its audience.</p>
+  <div class="ctx"><strong>Context links →</strong> <a class="xlink" href="post-11.html">The Service Elevator Never Arrives —…</div><a class="xlink" href="post-22.html">The Gym Mirror That Flatters Is Also…</a><a class="xlink" href="post-13.html">Mandatory Fun Is Coercion Wearing a …</a></div>
+</a></div></section><section class="cluster"><h2><span class="tcard cat" role="presentation"><span class="tt">Coercive Systems</span><span class="badge">2 min · #18</span></span></h2>
+<p>1 dispatch — click any card to open it; hover flips its icon rig to the negative spectrum.</p>
+<div class="grid"><div class="hubcard" data-target="post-18.html">
+  <span class="ic"><svg viewBox="0 0 24 24"><path class="grow" d="M4 20V10M10 20V4M16 20v-8M22 20H2"/></svg> Coercive Systems</span>
+  <span class="no">Dispatch #18 · 2 min read · Coercive Systems<span class="badge">2 min · #18</span>
+  </span><h3><span class="tcard post" role="presentation"><span class="tt">The Hotel Minibar Is a Contract No One Reads</span></span></h3>
+  <p>Snacks priced like surgery are a legal test: did the guest consent, or merely get hungry?</p>
+  <div class="ctx"><strong>Context links →</strong> <a class="xlink" href="post-17.html">The Intercom That Only Answers In On…</div><a class="xlink" href="post-13.html">Mandatory Fun Is Coercion Wearing a …</a><a class="xlink" href="post-22.html">The Gym Mirror That Flatters Is Also…</a></div>
+</a></div></section><section class="cluster"><h2><span class="tcard cat" role="presentation"><span class="tt">Environmental Gaslighting</span><span class="badge">2 min · #19</span></span></h2>
+<p>1 dispatch — click any card to open it; hover flips its icon rig to the negative spectrum.</p>
+<div class="grid"><div class="hubcard" data-target="post-19.html">
+  <span class="ic"><svg viewBox="0 0 24 24"><path class="sway" style="transform-origin:4px 12px" d="M4 21V3h12v18zM4 21h16"/><circle class="pulse" cx="13" cy="12" r="1.1"/></svg> Environmental Gaslighting</span>
+  <span class="no">Dispatch #19 · 2 min read · Environmental Gaslighting<span class="badge">2 min · #19</span>
+  </span><h3><span class="tcard post" role="presentation"><span class="tt">Why Every Emergency Exit Sign Glows Even When Nothing Is Burning</span></span></h3>
+  <p>Glowing exits sell the feeling of escape; whether the door behind them opens is a separate budget line.</p>
+  <div class="ctx"><strong>Context links →</strong> <a class="xlink" href="post-13.html">Mandatory Fun Is Coercion Wearing a …</div><a class="xlink" href="post-17.html">The Intercom That Only Answers In On…</a><a class="xlink" href="post-22.html">The Gym Mirror That Flatters Is Also…</a></div>
+</a></div></section><section class="cluster"><h2><span class="tcard cat" role="presentation"><span class="tt">Coercive Systems</span><span class="badge">2 min · #20</span></span></h2>
+<p>1 dispatch — click any card to open it; hover flips its icon rig to the negative spectrum.</p>
+<div class="grid"><div class="hubcard" data-target="post-20.html">
+  <span class="ic"><svg viewBox="0 0 24 24"><rect class="float" x="9" y="3" width="6" height="11" rx="3"/><path class="draw" d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg> Coercive Systems</span>
+  <span class="no">Dispatch #20 · 2 min read · Coercive Systems<span class="badge">2 min · #20</span>
+  </span><h3><span class="tcard post" role="presentation"><span class="tt">The Group Chat Admin Who Silences Everyone &#x27;For Their Own Good&#x27;</span></span></h3>
+  <p>Mute buttons are elevator buttons for conversation — press down, the room goes up.</p>
+  <div class="ctx"><strong>Context links →</strong> <a class="xlink" href="post-11.html">The Service Elevator Never Arrives —…</div><a class="xlink" href="post-17.html">The Intercom That Only Answers In On…</a><a class="xlink" href="post-22.html">The Gym Mirror That Flatters Is Also…</a></div>
+</a></div></section><section class="cluster"><h2><span class="tcard cat" role="presentation"><span class="tt">Coercive Systems</span><span class="badge">2 min · #21</span></span></h2>
+<p>1 dispatch — click any card to open it; hover flips its icon rig to the negative spectrum.</p>
+<div class="grid"><div class="hubcard" data-target="post-21.html">
+  <span class="ic"><svg viewBox="0 0 24 24"><path class="draw" d="M2 12s3.5-6 10-6 10 6 10 6-3.5 6-10 6S2 12 2 12z"/><circle class="pulse" cx="12" cy="12" r="2.6"/></svg> Coercive Systems</span>
+  <span class="no">Dispatch #21 · 2 min read · Coercive Systems<span class="badge">2 min · #21</span>
+  </span><h3><span class="tcard post" role="presentation"><span class="tt">Parking Garages Count Cars Better Than People — And That&#x27;s The Problem</span></span></h3>
+  <p>ANPR gates learned every plate but never learned whose complaint gets answered.</p>
+  <div class="ctx"><strong>Context links →</strong> <a class="xlink" href="post-17.html">The Intercom That Only Answers In On…</div><a class="xlink" href="post-13.html">Mandatory Fun Is Coercion Wearing a …</a><a class="xlink" href="post-22.html">The Gym Mirror That Flatters Is Also…</a></div>
+</a></div></section><section class="cluster"><h2><span class="tcard cat" role="presentation"><span class="tt">Liminal Spaces</span><span class="badge">2 min · #22</span></span></h2>
+<p>1 dispatch — click any card to open it; hover flips its icon rig to the negative spectrum.</p>
+<div class="grid"><div class="hubcard" data-target="post-22.html">
+  <span class="ic"><svg viewBox="0 0 24 24"><path class="draw" d="M2 12s3.5-6 10-6 10 6 10 6-3.5 6-10 6S2 12 2 12z"/><circle class="pulse" cx="12" cy="12" r="2.6"/></svg> Liminal Spaces</span>
+  <span class="no">Dispatch #22 · 2 min read · Liminal Spaces<span class="badge">2 min · #22</span>
+  </span><h3><span class="tcard post" role="presentation"><span class="tt">The Gym Mirror That Flatters Is Also a Compliance Tool</span></span></h3>
+  <p>Calibrated lighting in weight rooms isn&#x27;t vanity — it&#x27;s retention engineering wearing a ring light.</p>
+  <div class="ctx"><strong>Context links →</strong> <a class="xlink" href="post-13.html">Mandatory Fun Is Coercion Wearing a …</div><a class="xlink" href="post-17.html">The Intercom That Only Answers In On…</a><a class="xlink" href="post-18.html">The Hotel Minibar Is a Contract No O…</a></div>
+</a></div></section></div>
+
+<section class="howto">
+<article><span class="ic"><svg viewBox="0 0 24 24"><rect class="float" x="3" y="5" width="18" height="14" rx="3"/><path class="dash" d="M3 10h18"/></svg></span><h3><span class="tcard post" role="presentation"><span class="tt">Negative-colour hover</span></span></h3><p>Cards, icons, chips and map nodes apply <code>filter: invert(1) hue-rotate(180deg)</code> on hover — the palette photographs its own complement.</p></article>
+<article><span class="ic"><svg viewBox="0 0 24 24"><g class="spin" style="transform-origin:12px 12px"><path d="M12 3v4M12 17v4M3 12h4M17 12h4"/><circle cx="12" cy="12" r="4"/></g></span><h3><span class="tcard post" role="presentation"><span class="tt">Animated SVG rigs</span></span></h3><p>13 topic icons keep moving: drawing strokes, spinning gears, pulsing eyes, floating capsules, blinking dots — pure CSS keyframes, zero JavaScript.</p></article>
+<article><span class="ic"><svg viewBox="0 0 24 24"><path class="draw" d="M4 17 10 11 14 15 20 7"/><path class="dash" d="M14 7h6v6"/></svg></span><h3><span class="tcard post" role="presentation"><span class="tt">Context rails</span></span></h3><p>Each dispatch ships three “Read next” links chosen by TF-IDF cosine similarity, so navigation follows meaning, not numbering.</p></article>
+</section>
+
+<div class="flowbar"><div class="flow"><span><b>#01</b> Do You Want to Go to &quot;Ele Hand&quot;? The Tha</span><span><b>#02</b> Why Venues Ban Cameras – And Why Enforce</span><span><b>#03</b> Confluence&#x27;s &quot;Add Content&quot; Controls Aren</span><span><b>#04</b> When Elevators Glitch Repeatedly, It&#x27;s N</span><span><b>#05</b> When You Press DOWN and the Lift Goes UP</span><span><b>#06</b> &quot;Under Construction&quot; Isn&#x27;t a Status — It</span><span><b>#07</b> &quot;White Glove Security&quot; Isn&#x27;t Premium Pro</span><span><b>#08</b> Constant Drilling Upstairs Isn&#x27;t Just No</span><span><b>#09</b> The Desire for a &quot;Secret Exit&quot; Isn&#x27;t Abo</span><span><b>#10</b> Black Residue in Your AC Isn&#x27;t Just Dirt</span><span><b>#11</b> The Service Elevator Never Arrives — It </span><span><b>#12</b> The CCTV Light That Never Turns Off Is P</span><span><b>#13</b> Mandatory Fun Is Coercion Wearing a Part</span><span><b>#14</b> Your Landlord&#x27;s &quot;Routine Inspection&quot; Is </span><span><b>#15</b> The Loading Screen Lies: Progress Bars a</span><span><b>#16</b> Open-Plan Offices Aren&#x27;t Open — They&#x27;re </span><span><b>#17</b> The Intercom That Only Answers In One Di</span><span><b>#18</b> The Hotel Minibar Is a Contract No One R</span><span><b>#19</b> Why Every Emergency Exit Sign Glows Even</span><span><b>#20</b> The Group Chat Admin Who Silences Everyo</span><span><b>#21</b> Parking Garages Count Cars Better Than P</span><span><b>#22</b> The Gym Mirror That Flatters Is Also a C</span><span><b>#01</b> Do You Want to Go to &quot;Ele Hand&quot;? The Tha</span><span><b>#02</b> Why Venues Ban Cameras – And Why Enforce</span><span><b>#03</b> Confluence&#x27;s &quot;Add Content&quot; Controls Aren</span><span><b>#04</b> When Elevators Glitch Repeatedly, It&#x27;s N</span><span><b>#05</b> When You Press DOWN and the Lift Goes UP</span><span><b>#06</b> &quot;Under Construction&quot; Isn&#x27;t a Status — It</span><span><b>#07</b> &quot;White Glove Security&quot; Isn&#x27;t Premium Pro</span><span><b>#08</b> Constant Drilling Upstairs Isn&#x27;t Just No</span><span><b>#09</b> The Desire for a &quot;Secret Exit&quot; Isn&#x27;t Abo</span><span><b>#10</b> Black Residue in Your AC Isn&#x27;t Just Dirt</span><span><b>#11</b> The Service Elevator Never Arrives — It </span><span><b>#12</b> The CCTV Light That Never Turns Off Is P</span><span><b>#13</b> Mandatory Fun Is Coercion Wearing a Part</span><span><b>#14</b> Your Landlord&#x27;s &quot;Routine Inspection&quot; Is </span><span><b>#15</b> The Loading Screen Lies: Progress Bars a</span><span><b>#16</b> Open-Plan Offices Aren&#x27;t Open — They&#x27;re </span><span><b>#17</b> The Intercom That Only Answers In One Di</span><span><b>#18</b> The Hotel Minibar Is a Contract No One R</span><span><b>#19</b> Why Every Emergency Exit Sign Glows Even</span><span><b>#20</b> The Group Chat Admin Who Silences Everyo</span><span><b>#21</b> Parking Garages Count Cars Better Than P</span><span><b>#22</b> The Gym Mirror That Flatters Is Also a C</span></div></div>
+</main>
+<footer><span>THE CONTROL FILES · hub for <a class="xlink" href="post-01.html">post-01</a> … <a class="xlink" href="post-22.html">post-22</a> · generated by make_hub.py</span><span><a class="xlink" href="post-01.html">Begin reading →</a></span></footer>
+</body></html>

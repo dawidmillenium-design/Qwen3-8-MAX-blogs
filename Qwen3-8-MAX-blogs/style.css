@@ -1,0 +1,147 @@
+/* ===== hover2026: negative-color v2 + rightward glide (latest CSS) ===== */
+@property --nx{syntax:"<number>";inherits:false;initial-value:0}
+@property --skew{syntax:"<angle>";inherits:false;initial-value:0deg}
+a.xlink,a.rel,a.pager a,.toc a,.badge,.negchip,.hubcard,.jump a,.lchip,.map a circle,article svg,aside svg{transition:translate .4s cubic-bezier(.34,1.56,.64,1),rotate .4s ease,scale .4s ease,filter .45s ease,color .3s,background-size .45s cubic-bezier(.2,.9,.2,1)}
+a.xlink:hover,a.rel:hover,.toc a:hover,.pager a:hover{translate:7px 0;rotate:-1deg}
+.badge:hover,.negchip:hover{translate:9px 0;rotate:-2deg}
+.hubcard:hover,.jump a:hover,.lchip:hover{translate:10px 0;rotate:.8deg}
+.map a:hover{translate:6px 0}
+a:hover svg,.hubcard:hover .ic svg,.jump a:hover svg{animation-duration:.45s!important;scale:1.18;rotate:6deg}
+a.xlink::after{content:"→";display:inline-block;translate:0 -1px;opacity:calc(var(--nx,0));margin-inline-start:calc(var(--nx,0)*.35em);transition:--nx .4s ease,color .3s;text-decoration:none}
+a.xlink:hover::after{--nx:1;color:var(--c)}
+@supports (transition-behavior:allow-discrete){a.xlink::after{transition-behavior:allow-discrete}}
+a:hover>.ic svg,a:hover svg:first-of-type{stroke-dashoffset:0!important}
+
+/* ===== 2026 upgrade: negative-color hover v2 + rightward glide ===== */
+@property --nx{syntax:"<number>";inherits:false;initial-value:0}
+@property --skew{syntax:"<angle>";inherits:false;initial-value:0deg}
+@property --glow{syntax:"<color>";inherits:false;initial-value:#ff2d95}
+a.xlink,a.rel,a.pager a,.toc a,.badge,.negchip,.hubcard,.jump a,.lchip,.map a circle,article svg,aside svg{transition:translate .4s cubic-bezier(.34,1.56,.64,1),rotate .4s ease,scale .4s ease,filter .45s ease,color .3s,background-size .45s cubic-bezier(.2,.9,.2,1)}
+a.xlink:hover,a.rel:hover,.toc a:hover,.pager a:hover{translate:7px 0;rotate:-1deg}
+.badge:hover,.negchip:hover{translate:9px 0;rotate:-2deg}
+.hubcard:hover,.jump a:hover,.lchip:hover{translate:10px 0;rotate:.8deg}
+.map a:hover{translate:6px 0}
+a:hover svg,.hubcard:hover .ic svg,.jump a:hover svg{animation-duration:.45s!important;scale:1.18;rotate:6deg}
+a.xlink::after{content:"→";display:inline-block;translate:0 -1px;opacity:calc(var(--nx,0));margin-inline-start:calc(var(--nx,0)*.35em);transition:--nx .4s ease,color .3s;text-decoration:none}
+a.xlink:hover::after{--nx:1;color:var(--c)}
+@supports (transition-behavior:allow-discrete){a.xlink::after{transition-behavior:allow-discrete}}
+/* animated icon-on-hover burst for every link carrying an SVG */
+a:hover>.ic svg,a:hover svg:first-of-type{stroke-dashoffset:0!important}
+@property --ang{syntax:"<angle>";inherits:true;initial-value:0deg}
+@property --a{syntax:"<color>";inherits:true;initial-value:#ff2d95}
+@property --b{syntax:"<color>";inherits:true;initial-value:#7b2dff}
+@property --c{syntax:"<color>";inherits:true;initial-value:#00e5c7}
+:root{color-scheme:dark;--bg:#05060f;--ink:#eef0ff;--muted:#9aa0c3;--panel:rgba(255,255,255,.05);
+--line:rgba(255,255,255,.14);--r:22px;--fd:ui-rounded,"SF Pro Rounded",system-ui,sans-serif;
+--fb:Charter,"Iowan Old Style",Georgia,serif;font-size:clamp(15px,.55vw+.9rem,18px)}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--fb);line-height:1.65;
+overflow-x:hidden;text-wrap:pretty hyphenate}
+/* VRAM-eating backdrop stack */
+body::before{content:"";position:fixed;inset:-20%;z-index:-2;pointer-events:none;
+background:conic-gradient(from var(--ang),color-mix(in oklab,var(--a) 28%,transparent),
+color-mix(in oklab,var(--b) 30%,transparent),color-mix(in oklab,var(--c) 26%,transparent),
+color-mix(in oklab,var(--a) 28%,transparent));filter:blur(90px) saturate(1.4);
+animation:spin 40s linear infinite;mix-blend-mode:screen}
+@keyframes spin{to{--ang:360deg}}
+.blob{position:fixed;width:55vmax;height:55vmax;border-radius:50%;z-index:-1;pointer-events:none;
+filter:blur(90px) hue-rotate(0deg);mix-blend-mode:screen;opacity:.5;
+animation:morph 26s ease-in-out infinite alternate,hue 30s linear infinite}
+.blob.b1{background:radial-gradient(circle,var(--a),transparent 70%);left:-15vmax;top:-15vmax}
+.blob.b2{background:radial-gradient(circle,var(--b),transparent 70%);right:-18vmax;top:20vh;animation-delay:-8s}
+.blob.b3{background:radial-gradient(circle,var(--c),transparent 70%);left:10vw;bottom:-25vmax;animation-delay:-15s}
+@keyframes morph{to{border-radius:38% 62% 55% 45%/50% 40% 60% 50%;transform:translate3d(6vw,-4vh,0) scale(1.15)}}
+@keyframes hue{to{filter:blur(90px) hue-rotate(360deg)}}
+.grain{position:fixed;inset:0;z-index:60;pointer-events:none;opacity:.14;mix-blend-mode:overlay;
+background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+animation:jitter .4s steps(4) infinite}
+@keyframes jitter{to{background-position:40px 30px}}
+header.site,nav.rail,footer{backdrop-filter:blur(22px) saturate(1.6);-webkit-backdrop-filter:blur(22px) saturate(1.6);
+background:color-mix(in oklab,var(--bg) 62%,transparent)}
+header.site{position:sticky;top:0;z-index:50;display:flex;gap:1rem;align-items:center;
+padding:.8rem clamp(1rem,4vw,3rem);border-bottom:1px solid var(--line)}
+.brand{display:flex;align-items:center;gap:.6rem;font-family:var(--fd);font-weight:800;
+letter-spacing:.02em;font-size:1.15rem;text-decoration:none;color:var(--ink)}
+.brand svg{width:26px;height:26px}
+main{max-width:1400px;margin:0 auto;padding:clamp(1rem,3vw,2.5rem);display:grid;
+grid-template-columns:minmax(0,1fr) 320px;gap:2rem;container-type:inline-size}
+@container (max-width:900px){main{grid-template-columns:1fr}}
+article.post{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);
+padding:clamp(1.2rem,3vw,2.4rem);backdrop-filter:blur(18px);position:relative;isolation:isolate;
+animation:reveal linear both;animation-timeline:view();animation-range:entry 5% cover 30%}
+@keyframes reveal{from{opacity:0;transform:translateY(40px) scale(.98);filter:blur(6px)}
+to{opacity:1;transform:none;filter:none}}
+article.post::before{content:"";position:absolute;inset:-1px;border-radius:inherit;z-index:-1;
+background:conic-gradient(from var(--ang),var(--a),var(--b),var(--c),var(--a));
+filter:blur(60px);opacity:.28;mix-blend-mode:plus-lighter;animation:spin 24s linear infinite}
+h1{font-family:var(--fd);font-size:clamp(1.7rem,3.4vw,2.9rem);line-height:1.08;
+text-wrap:balance;letter-spacing:-.01em;margin:.2em 0 .4em}
+h2{font-family:var(--fd);font-size:1.35rem;margin:1.6em 0 .4em;text-wrap:balance}
+h3{font-family:var(--fd);font-size:1.08rem;color:color-mix(in oklab,var(--ink) 80%,var(--c))}
+.meta{display:flex;flex-wrap:wrap;gap:.5rem;align-items:center;color:var(--muted);
+font-family:var(--fd);font-size:.85rem}
+.badge{display:inline-flex;gap:.45rem;align-items:center;padding:.3rem .8rem;border-radius:99px;
+border:1px solid var(--line);background:color-mix(in oklab,var(--a) 14%,transparent);
+font-weight:700;color:var(--ink);text-decoration:none;transition:.35s cubic-bezier(.2,.9,.2,1)}
+.badge svg{width:18px;height:18px}
+.badge:hover{background:color-mix(in oklab,var(--c) 30%,transparent);
+transform:translateY(-2px) scale(1.04);box-shadow:0 8px 30px -8px color-mix(in oklab,var(--c) 60%,transparent)}
+/* ---------- NEGATIVE-COLOR HOVER: the signature effect ---------- */
+a.xlink,a.rel,a.pager a,.toc a{text-decoration:none;color:inherit;background-image:linear-gradient(
+color-mix(in oklab,var(--a) 85%,white),color-mix(in oklab,var(--c) 85%,white));
+background-size:0% 100%;background-repeat:no-repeat;background-position:0 92%;
+transition:background-size .45s cubic-bezier(.2,.9,.2,1),filter .45s ease,color .3s;text-shadow:0 0 1px rgba(0,0,0,.4)}
+a.xlink:hover,a.rel:hover,.toc a:hover,.pager a:hover{color:#fff;background-size:100% 100%;
+filter:invert(1) hue-rotate(180deg) contrast(1.35) saturate(1.6);
+mix-blend-mode:difference;border-radius:6px;padding:0 .15em;margin:0 -.15em}
+a.xlink strong,a.xlink em{font-style:inherit;font-weight:inherit}
+.negchip{display:inline-block;background:var(--ink);color:var(--bg);font-family:var(--fd);
+font-weight:800;padding:.15rem .6rem;border-radius:8px;mix-blend-mode:difference;transition:.4s}
+.negchip:hover{filter:invert(1) hue-rotate(180deg) contrast(1.4) saturate(1.7);transform:rotate(-2deg) scale(1.08)}
+/* ---------- animated svg icon engine ---------- */
+article svg,aside svg,header svg{fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;
+stroke-linejoin:round;overflow:visible}
+.spin{animation:rspin 6s linear infinite}@keyframes rspin{to{transform:rotate(360deg)}}
+.pulse{transform-origin:center;animation:rpulse 1.6s ease-in-out infinite;fill:currentColor;stroke:none}
+@keyframes rpulse{50%{transform:scale(1.45);opacity:.55}}
+.blink{animation:rblink 1.3s steps(2,jump-none) infinite;fill:currentColor;stroke:none}
+@keyframes rblink{50%{opacity:.15}}
+.dash{stroke-dasharray:120;stroke-dashoffset:120;animation:rdash 3s linear infinite}
+@keyframes rdash{to{stroke-dashoffset:-120}}
+.draw{stroke-dasharray:160;animation:rdraw 4s ease-in-out infinite alternate}
+@keyframes rdraw{from{stroke-dashoffset:160}to{stroke-dashoffset:0}}
+.float{animation:rfloat 3.2s ease-in-out infinite}
+@keyframes rfloat{50%{transform:translateY(-2.5px)}}
+.sway{animation:rsway 2.6s ease-in-out infinite}
+@keyframes rsway{50%{transform:rotate(8deg)}}
+.shake{animation:rshake .5s ease-in-out infinite}
+@keyframes rshake{25%{transform:translateX(.6px) rotate(1deg)}75%{transform:translateX(-.6px) rotate(-1deg)}}
+.grow{stroke-dasharray:60;stroke-dashoffset:60;animation:rgrow 2.4s ease forwards,rglow 2.4s ease-in-out infinite}
+@keyframes rgrow{to{stroke-dashoffset:0}}@keyframes rglow{50%{opacity:.5}}
+/* ---------- rails ---------- */
+aside.rail{position:sticky;top:76px;align-self:start;display:grid;gap:1rem;
+container-type:inline-size}
+.panel{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);padding:1.1rem 1.2rem;
+backdrop-filter:blur(16px) saturate(1.4)}
+.panel h4{margin:.1rem 0 .6rem;font-family:var(--fd);display:flex;gap:.5rem;align-items:center}
+.panel h4 svg{width:20px;height:20px;color:var(--c)}
+.toc{display:grid;gap:.35rem;font-family:var(--fd);font-size:.9rem}
+.toc a{display:flex;justify-content:space-between;gap:.5rem;padding:.25rem .4rem;border-radius:8px}
+.rel{display:grid;gap:.5rem}
+a.rel{display:flex;gap:.6rem;align-items:center;border:1px solid var(--line);border-radius:14px;
+padding:.55rem .7rem;background:color-mix(in oklab,var(--b) 8%,transparent)}
+a.rel svg{width:22px;height:22px;flex:none;color:var(--a)}
+a.rel span{font-family:var(--fd);font-size:.85rem;line-height:1.25}
+.pager{display:flex;justify-content:space-between;gap:1rem;margin-top:1.4rem;font-family:var(--fd)}
+.pager a{border:1px solid var(--line);border-radius:99px;padding:.55rem 1.1rem;display:inline-flex;
+gap:.5rem;align-items:center;background:var(--panel);backdrop-filter:blur(10px)}
+footer{position:sticky;bottom:0;z-index:40;border-top:1px solid var(--line);padding:.6rem 2rem;
+display:flex;justify-content:space-between;gap:1rem;font-family:var(--fd);font-size:.8rem;color:var(--muted)}
+.progress{position:fixed;top:0;left:0;height:3px;width:100%;z-index:70;transform-origin:0 50%;
+transform:scaleX(0);background:linear-gradient(90deg,var(--a),var(--b),var(--c));
+animation:prog linear;animation-timeline:scroll(root)}
+@keyframes prog{to{transform:scaleX(1)}}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}
+a:hover{filter:none!important;mix-blend-mode:normal!important}}
+@media print{.blob,.grain,.progress,aside,footer{display:none}article.post{break-inside:avoid;filter:none!important}}
