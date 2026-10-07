@@ -258,6 +258,16 @@ def contextualize(post, all_posts_by_num, rel_list, used):
                 if sc>bestsc: bestsc,best=sc,tn
             if best and bestsc>=3:
                 seen.add(ph); pool.append((m.group(0),ph,best))
+    # 3) last-resort: guarantee >=1 contextual link by matching single distinctive keywords
+    if not pool:
+        import random; random.seed(post["num"])
+        for tn in nums:
+            tp=all_posts_by_num[tn]
+            uniq=[w for w in tp["kw"] if len(w)>6 and w in post["body"].lower()]
+            if uniq:
+                w=max(uniq,key=len)
+                m=re.search(r"<strong>([^<]{0,60}"+re.escape(w)+r"[^<]{0,60}?)</strong>",post["body"],re.I)
+                if m: pool.append((m.group(0),m.group(1),tn)); break
     for full,ph,tn in pool[:4]:
         used.add(ph)
         tag="strong" if "<strong>" in full else "em"
