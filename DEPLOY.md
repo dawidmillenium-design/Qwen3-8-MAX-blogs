@@ -1,27 +1,30 @@
-# Deploying THE CONTROL FILES hub to GitHub Pages
+# Deploying THE CONTROL FILES to GitHub Pages
 
 Target URL: https://dawidmillenium-design.github.io/Qwen3-8-MAX-blogs/index.html
 
-## Layout (already prepared in this repo)
-```
-index.html          ← HUB PAGE (links to all 22 dispatches)
-site/index.html     ← original 22-card overview
-site/post-01..22.html
-site/style.css      ← shared design system (negative hover + SVG rigs)
-Qwen3-8-MAX-blogs/  ← ready-made copy of the same deploy bundle
-docs/index.html     ← generated hub (source of root index.html, via make_hub.py)
-```
+## Site structure (FLAT — no subfolders)
+All files live at the repository root, exactly as served:
+- index.html ......... hub page (links to all 22 dispatches)
+- post-01.html ... post-22.html ... the 22 blog files (interlinked by context)
+- style.css .......... shared stylesheet (negative-color hover + animated SVGs)
 
-## Push steps (needs your GitHub credentials — none present in this sandbox)
+The old site/ subfolder has been removed; every href that pointed to
+site/post-NN.html now points directly to post-NN.html.
+
+## Publish (repo Qwen3-8-MAX-blogs, branch main, source: root)
 ```bash
-cd Qwen3-8-MAX-blogs
-git init -b main
-git add -A
-git commit -m "Hub page + 22 interconnected dispatches"
+cd Qwen3-8-MAX-blogs          # this folder mirrors the repo root 1:1
+git init && git add -A
+git commit -m "Flat layout: hub + 22 posts + style.css at root"
 git remote add origin https://github.com/dawidmillenium-design/Qwen3-8-MAX-blogs.git
-git push -u origin main --force        # or use a fine-grained PAT: https://<token>@github.com/...
+git push -u origin main --force
+# then: Settings -> Pages -> Source: Deploy from branch -> main / (root) -> Save
 ```
-Then: repo → Settings → Pages → Source: **Deploy from a branch** → `main` / `/ (root)` → Save.
-The hub goes live at `/index.html`; every post is reachable at `/site/post-NN.html`.
+Note: pushing requires your GitHub credentials (a Personal Access Token);
+this workspace has none configured.
 
-Regenerate the hub any time with: `python3 make_hub.py` (reads site/, writes docs/index.html).
+## Verify after deploy
+- /index.html ............ hub loads, cards + link-map clickable
+- /post-01.html .. /post-22.html ... each post renders with style.css
+- hovering any internal link inverts to negative colors
+- no 404s: all 936 local references resolve (audited)
