@@ -4,7 +4,21 @@
 <title>Your Landlord&#x27;s &quot;Routine Inspection&quot; Is a Consent Question You Were Never Asked · THE CONTROL FILES #14</title>
 <meta name="description" content="Twenty-four hours&#x27; notice is not permission; it is a schedule dressed as courtesy.">
 <link rel="stylesheet" href="style.css">
-<style>:root{--a:#39ff14;--b:#00b3ff;--c:#ff3860}</style>
+<style>:root{--a:#39ff14;--b:#00b3ff;--c:#ff3860}
+/* ===== hover2026: negative-color v2 + rightward glide (latest CSS) ===== */
+@property --nx{syntax:"<number>";inherits:false;initial-value:0}
+@property --skew{syntax:"<angle>";inherits:false;initial-value:0deg}
+a.xlink,a.rel,a.pager a,.toc a,.badge,.negchip,.hubcard,.jump a,.lchip,.map a circle,article svg,aside svg{transition:translate .4s cubic-bezier(.34,1.56,.64,1),rotate .4s ease,scale .4s ease,filter .45s ease,color .3s,background-size .45s cubic-bezier(.2,.9,.2,1)}
+a.xlink:hover,a.rel:hover,.toc a:hover,.pager a:hover{translate:7px 0;rotate:-1deg}
+.badge:hover,.negchip:hover{translate:9px 0;rotate:-2deg}
+.hubcard:hover,.jump a:hover,.lchip:hover{translate:10px 0;rotate:.8deg}
+.map a:hover{translate:6px 0}
+a:hover svg,.hubcard:hover .ic svg,.jump a:hover svg{animation-duration:.45s!important;scale:1.18;rotate:6deg}
+a.xlink::after{content:"→";display:inline-block;translate:0 -1px;opacity:calc(var(--nx,0));margin-inline-start:calc(var(--nx,0)*.35em);transition:--nx .4s ease,color .3s;text-decoration:none}
+a.xlink:hover::after{--nx:1;color:var(--c)}
+@supports (transition-behavior:allow-discrete){a.xlink::after{transition-behavior:allow-discrete}}
+a:hover>.ic svg,a:hover svg:first-of-type{stroke-dashoffset:0!important}
+</style>
 </head><body>
 <div class="progress"></div><i class="blob b1"></i><i class="blob b2"></i><i class="blob b3"></i><div class="grain"></div>
 <header class="site"><a class="brand" href="index.html"><svg viewBox="0 0 24 24"><path class="draw" d="M12 2 3 7l9 5 9-5-9-5zM3 12l9 5 9-5M3 17l9 5 9-5"/></svg><span>THE CONTROL FILES</span></a>
