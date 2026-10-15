@@ -3,243 +3,1159 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>The Control Files</title>
-  <!-- Fixed: Properly quoted attributes and closed tag -->
-  <link rel="stylesheet" href="style.css">
+  <title>The Control Files — 22 Dispatches on Coercive Systems</title>
+  <meta name="description" content="One cursed HTML archive, split into twenty-two interconnected dispatches on coercive systems, environmental gaslighting, liminal architecture and digital power.">
+  <meta property="og:title" content="The Control Files">
+  <meta property="og:description" content="22 interconnected dispatches on coercive systems, environmental gaslighting, liminal architecture and digital power.">
+  <meta property="og:type" content="website">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    /* === RESET & BASE === */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg-primary: #0a0a0f;
+      --bg-secondary: #12121a;
+      --bg-card: #16161f;
+      --bg-card-hover: #1c1c28;
+      --border-subtle: rgba(255,255,255,0.06);
+      --border-accent: rgba(255,255,255,0.1);
+      --text-primary: #f0f0f5;
+      --text-secondary: #a0a0b0;
+      --text-muted: #6b6b7b;
+      --accent-red: #ef4444;
+      --accent-amber: #f59e0b;
+      --accent-purple: #a855f7;
+      --accent-blue: #3b82f6;
+      --accent-green: #22c55e;
+      --gradient-hero: linear-gradient(135deg, #1a0a2e 0%, #0d1b3e 40%, #0a0a0f 100%);
+      --gradient-card: linear-gradient(145deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0) 100%);
+      --shadow-card: 0 4px 24px rgba(0,0,0,0.4);
+      --shadow-card-hover: 0 12px 48px rgba(0,0,0,0.6);
+      --radius-sm: 8px;
+      --radius-md: 12px;
+      --radius-lg: 16px;
+      --radius-xl: 20px;
+      --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+      --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+      --transition-med: 300ms cubic-bezier(0.22, 1, 0.36, 1);
+      --transition-slow: 500ms cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font-sans);
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      line-height: 1.6;
+      min-height: 100vh;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    /* === HEADER / NAV === */
+    .site-header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      padding: 12px 24px;
+      background: rgba(10, 10, 15, 0.8);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border-subtle);
+      transition: var(--transition-med);
+    }
+
+    .header-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      font-family: var(--font-mono);
+      font-size: 14px;
+      font-weight: 500;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--text-primary);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .logo-icon {
+      width: 28px;
+      height: 28px;
+      border-radius: 6px;
+      background: linear-gradient(135deg, var(--accent-red), var(--accent-purple));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      color: white;
+      font-weight: 700;
+    }
+
+    .header-meta {
+      font-size: 13px;
+      color: var(--text-muted);
+      font-family: var(--font-mono);
+    }
+
+    .header-meta .highlight {
+      color: var(--accent-red);
+      font-style: italic;
+    }
+
+    /* === HERO SECTION === */
+    .hero {
+      position: relative;
+      padding: 140px 24px 80px;
+      background: var(--gradient-hero);
+      overflow: hidden;
+      text-align: center;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+      background-size: 60px 60px;
+      pointer-events: none;
+    }
+
+    /* Floating decorative elements (adapted from Jupitrr) */
+    .floating-element {
+      position: absolute;
+      border-radius: var(--radius-md);
+      opacity: 0.15;
+      pointer-events: none;
+      animation: float 6s ease-in-out infinite;
+    }
+
+    .float-1 {
+      width: 80px; height: 140px;
+      background: linear-gradient(135deg, var(--accent-purple), transparent);
+      top: 20%; right: 8%;
+      transform: rotate(4deg);
+      animation-delay: 0s;
+    }
+
+    .float-2 {
+      width: 60px; height: 106px;
+      background: linear-gradient(135deg, var(--accent-blue), transparent);
+      top: 50%; left: 6%;
+      transform: rotate(-5deg);
+      animation-delay: 2s;
+    }
+
+    .float-3 {
+      width: 50px; height: 88px;
+      background: linear-gradient(135deg, var(--accent-red), transparent);
+      bottom: 20%; right: 15%;
+      transform: rotate(3deg);
+      animation-delay: 4s;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0) rotate(var(--rot, 4deg)); }
+      50% { transform: translateY(-12px) rotate(calc(var(--rot, 4deg) + 1deg)); }
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 16px;
+      border-radius: 100px;
+      border: 1px solid rgba(255,255,255,0.1);
+      background: rgba(255,255,255,0.04);
+      backdrop-filter: blur(8px);
+      font-size: 13px;
+      font-family: var(--font-mono);
+      color: var(--text-secondary);
+      margin-bottom: 28px;
+      animation: fadeUp 0.6s ease-out both;
+    }
+
+    .hero-badge .dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--accent-red);
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.3; }
+    }
+
+    .hero h1 {
+      font-size: clamp(36px, 6vw, 64px);
+      font-weight: 700;
+      letter-spacing: -2px;
+      line-height: 1.1;
+      margin-bottom: 20px;
+      animation: fadeUp 0.6s ease-out 0.1s both;
+    }
+
+    .hero h1 .accent {
+      background: linear-gradient(135deg, var(--accent-red), var(--accent-purple));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-description {
+      max-width: 640px;
+      margin: 0 auto 36px;
+      font-size: 17px;
+      line-height: 1.7;
+      color: var(--text-secondary);
+      animation: fadeUp 0.6s ease-out 0.2s both;
+    }
+
+    .hero-stats {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      animation: fadeUp 0.6s ease-out 0.3s both;
+    }
+
+    .stat-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 16px;
+      border-radius: 100px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--border-subtle);
+      font-size: 13px;
+      color: var(--text-secondary);
+      transition: var(--transition-fast);
+    }
+
+    .stat-pill:hover {
+      background: rgba(255,255,255,0.08);
+      border-color: var(--border-accent);
+      transform: translateY(-1px);
+    }
+
+    .stat-pill strong {
+      color: var(--text-primary);
+      font-weight: 600;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(16px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* === MAIN CONTENT GRID === */
+    .main-wrapper {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 60px 24px 100px;
+      display: grid;
+      grid-template-columns: 1fr 300px;
+      gap: 40px;
+    }
+
+    @media (max-width: 900px) {
+      .main-wrapper {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* === ARTICLE CARDS === */
+    .articles-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 20px;
+    }
+
+    .article-card {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border-subtle);
+      background: var(--bg-card);
+      overflow: hidden;
+      transition: var(--transition-med);
+      cursor: pointer;
+    }
+
+    .article-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: var(--gradient-card);
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .article-card:hover {
+      border-color: var(--border-accent);
+      background: var(--bg-card-hover);
+      box-shadow: var(--shadow-card-hover);
+      transform: translateY(-4px) scale(1.01);
+    }
+
+    .card-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 20px 0;
+      position: relative;
+      z-index: 2;
+    }
+
+    .card-category {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 11px;
+      font-family: var(--font-mono);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      padding: 4px 10px;
+      border-radius: 6px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid var(--border-subtle);
+    }
+
+    .card-category .cat-dot {
+      width: 5px; height: 5px;
+      border-radius: 50%;
+    }
+
+    .cat-coercive .cat-dot { background: var(--accent-red); }
+    .cat-environmental .cat-dot { background: var(--accent-green); }
+    .cat-digital .cat-dot { background: var(--accent-blue); }
+    .cat-liminal .cat-dot { background: var(--accent-purple); }
+    .cat-domestic .cat-dot { background: var(--accent-amber); }
+    .cat-language .cat-dot { background: #06b6d4; }
+
+    .card-meta {
+      font-size: 12px;
+      color: var(--text-muted);
+      font-family: var(--font-mono);
+    }
+
+    .card-body {
+      padding: 16px 20px 20px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      z-index: 2;
+    }
+
+    .card-title {
+      font-size: 17px;
+      font-weight: 600;
+      line-height: 1.4;
+      letter-spacing: -0.3px;
+      margin-bottom: 10px;
+      color: var(--text-primary);
+      transition: var(--transition-fast);
+    }
+
+    .article-card:hover .card-title {
+      color: white;
+    }
+
+    .card-excerpt {
+      font-size: 14px;
+      line-height: 1.6;
+      color: var(--text-secondary);
+      flex: 1;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    .card-links {
+      margin-top: 16px;
+      padding-top: 14px;
+      border-top: 1px solid var(--border-subtle);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .card-links-label {
+      font-size: 11px;
+      font-family: var(--font-mono);
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      width: 100%;
+      margin-bottom: 4px;
+    }
+
+    .context-link {
+      font-size: 12px;
+      padding: 3px 8px;
+      border-radius: 5px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-secondary);
+      transition: var(--transition-fast);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-width: 180px;
+    }
+
+    .context-link:hover {
+      background: rgba(255,255,255,0.08);
+      border-color: var(--accent-red);
+      color: var(--text-primary);
+    }
+
+    /* Negative hover effect (thematic) */
+    .article-card:hover .card-title {
+      animation: glitch 0.3s ease-in-out;
+    }
+
+    @keyframes glitch {
+      0% { transform: translate(0); }
+      20% { transform: translate(-1px, 1px); }
+      40% { transform: translate(1px, -1px); }
+      60% { transform: translate(-1px, -1px); }
+      80% { transform: translate(1px, 1px); }
+      100% { transform: translate(0); }
+    }
+
+    /* === SIDEBAR === */
+    .sidebar {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      position: sticky;
+      top: 80px;
+      height: fit-content;
+    }
+
+    @media (max-width: 900px) {
+      .sidebar { position: static; }
+    }
+
+    .sidebar-section {
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border-subtle);
+      background: var(--bg-card);
+      padding: 20px;
+      transition: var(--transition-med);
+    }
+
+    .sidebar-section:hover {
+      border-color: var(--border-accent);
+    }
+
+    .sidebar-title {
+      font-size: 13px;
+      font-family: var(--font-mono);
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .sidebar-title::before {
+      content: '';
+      width: 3px;
+      height: 14px;
+      border-radius: 2px;
+      background: var(--accent-red);
+    }
+
+    .related-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .related-list a {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 12px;
+      border-radius: var(--radius-sm);
+      font-size: 13px;
+      color: var(--text-secondary);
+      transition: var(--transition-fast);
+      border: 1px solid transparent;
+    }
+
+    .related-list a:hover {
+      background: rgba(255,255,255,0.04);
+      border-color: var(--border-subtle);
+      color: var(--text-primary);
+      transform: translateX(4px);
+    }
+
+    .related-list .num {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--text-muted);
+      min-width: 20px;
+    }
+
+    /* Full series nav */
+    .series-nav {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      max-height: 500px;
+      overflow-y: auto;
+      scrollbar-width: thin;
+      scrollbar-color: var(--border-accent) transparent;
+    }
+
+    .series-nav::-webkit-scrollbar { width: 4px; }
+    .series-nav::-webkit-scrollbar-track { background: transparent; }
+    .series-nav::-webkit-scrollbar-thumb { background: var(--border-accent); border-radius: 4px; }
+
+    .series-nav a {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 10px;
+      border-radius: 6px;
+      font-size: 12px;
+      color: var(--text-muted);
+      transition: var(--transition-fast);
+    }
+
+    .series-nav a:hover {
+      background: rgba(255,255,255,0.04);
+      color: var(--text-secondary);
+    }
+
+    .series-nav .sn-num {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      color: var(--text-muted);
+      min-width: 22px;
+      padding: 2px 5px;
+      border-radius: 4px;
+      background: rgba(255,255,255,0.04);
+      text-align: center;
+    }
+
+    /* === FOOTER === */
+    .site-footer {
+      border-top: 1px solid var(--border-subtle);
+      padding: 40px 24px;
+      background: var(--bg-secondary);
+    }
+
+    .footer-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .footer-text {
+      font-size: 13px;
+      font-family: var(--font-mono);
+      color: var(--text-muted);
+    }
+
+    .footer-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 20px;
+      border-radius: 100px;
+      background: linear-gradient(135deg, var(--accent-red), var(--accent-purple));
+      color: white;
+      font-size: 14px;
+      font-weight: 500;
+      transition: var(--transition-med);
+      box-shadow: 0 4px 16px rgba(239, 68, 68, 0.3);
+    }
+
+    .footer-cta:hover {
+      transform: translateY(-2px) scale(1.03);
+      box-shadow: 0 8px 32px rgba(239, 68, 68, 0.4);
+    }
+
+    .footer-cta svg {
+      transition: var(--transition-fast);
+    }
+
+    .footer-cta:hover svg {
+      transform: translateX(3px);
+    }
+
+    /* === RESPONSIVE === */
+    @media (max-width: 768px) {
+      .hero { padding: 120px 20px 60px; }
+      .hero h1 { letter-spacing: -1px; }
+      .articles-grid { grid-template-columns: 1fr; }
+      .main-wrapper { padding: 40px 16px 80px; gap: 32px; }
+      .header-meta { display: none; }
+      .floating-element { display: none; }
+    }
+
+    @media (max-width: 480px) {
+      .hero-stats { flex-direction: column; align-items: center; }
+      .card-links { flex-direction: column; }
+      .context-link { max-width: 100%; }
+    }
+
+    /* === SCROLL REVEAL === */
+    .reveal {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
 </head>
 <body>
 
-  <!-- Fixed: Added aria-hidden to decorative empty elements for screen reader accessibility -->
-  <div aria-hidden="true"></div>
-  <i aria-hidden="true"></i>
-  <i aria-hidden="true"></i>
-  <i aria-hidden="true"></i>
-  <div aria-hidden="true"></div>
-
-  <header>
-    <!-- Fixed: Added aria-current="page" -->
-    <a href="index.html" aria-current="page"><span>THE CONTROL FILES</span></a>
-    <span>22 dispatches · hover any link to see it go <span>negative</span></span>
+  <!-- HEADER -->
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="index.html" class="logo" aria-current="page">
+        <span class="logo-icon">CF</span>
+        THE CONTROL FILES
+      </a>
+      <span class="header-meta">22 dispatches · hover any link to see it go <span class="highlight">negative</span></span>
+    </div>
   </header>
 
-  <main>
-    <div>
-      <section>
-        <h1>The Control Files</h1>
-        <p>One cursed HTML archive, split into twenty-two interconnected dispatches on coercive systems, environmental gaslighting, liminal architecture and digital power. Every article links to its semantic neighbours.</p>
-        <div>
-          <span><b>22</b> files</span>
-          <span><b>88</b> contextual rail links</span>
-          <span><b>22</b> in-body contextual links</span>
-          <span><b>13</b> animated SVG icon rigs</span>
-        </div>
-      </section>
+  <!-- HERO -->
+  <section class="hero">
+    <div class="floating-element float-1" aria-hidden="true"></div>
+    <div class="floating-element float-2" aria-hidden="true"></div>
+    <div class="floating-element float-3" aria-hidden="true"></div>
 
-      <section>
-        <article>
-          <div><span> Language &amp; Culture</span><span>10 min · #01</span></div>
-          <!-- Fixed: Changed h3 to h2 to fix heading hierarchy -->
-          <h2><a href="post-01.html">Do You Want to Go to "Ele Hand"? The Thai English Accent, Explained Through a Bangkok Love Story</a></h2>
-          <p>A love story, a language lesson, and everything you need to know about the Thai English accent.…</p>
-          <div><strong>Context links →</strong> <a href="post-02.html">Why Venues Ban Cameras – And Why Enfor…</a><a href="post-04.html">When Elevators Glitch Repeatedly, It&#39;s…</a><a href="post-06.html">&quot;Under Construction&quot; Isn&#39;t a Status — …</a></div>
-        </article>
-        
-        <article>
-          <div><span> Coercive Systems</span><span>6 min · #02</span></div>
-          <h2><a href="post-02.html">Why Venues Ban Cameras – And Why Enforcement Feels So Personal</a></h2>
-          <p>Why do venues ban cameras — and why does enforcement feel so personal?…</p>
-          <div><strong>Context links →</strong> <a href="post-07.html">&quot;White Glove Security&quot; Isn&#39;t Premium P…</a><a href="post-04.html">When Elevators Glitch Repeatedly, It&#39;s…</a><a href="post-08.html">Constant Drilling Upstairs Isn&#39;t Just …</a></div>
-        </article>
-        
-        <article>
-          <div><span> Digital Power</span><span>4 min · #03</span></div>
-          <h2><a href="post-03.html">Confluence&#39;s &quot;Add Content&quot; Controls Aren&#39;t Just a Feature — They&#39;re an Architecture of Organizational Power</a></h2>
-          <p>Confluence&#39;s &quot;Add Content&quot; controls aren&#39;t just a feature — they&#39;re an architecture of organizational power.…</p>
-          <div><strong>Context links →</strong> <a href="post-07.html">&quot;White Glove Security&quot; Isn&#39;t Premium P…</a><a href="post-04.html">When Elevators Glitch Repeatedly, It&#39;s…</a><a href="post-02.html">Why Venues Ban Cameras – And Why Enfor…</a></div>
-        </article>
-        
-        <article>
-          <div><span> Environmental Gaslighting</span><span>5 min · #04</span></div>
-          <h2><a href="post-04.html">When Elevators Glitch Repeatedly, It&#39;s Not Just Maintenance — It&#39;s Environmental Control</a></h2>
-          <p>When elevators glitch repeatedly, it&#39;s not just a maintenance problem — it&#39;s an environmental control tactic.…</p>
-          <div><strong>Context links →</strong> <a href="post-10.html">Black Residue in Your AC Isn&#39;t Just Di…</a><a href="post-08.html">Constant Drilling Upstairs Isn&#39;t Just …</a><a href="post-05.html">When You Press DOWN and the Lift Goes …</a></div>
-        </article>
-        
-        <article>
-          <div><span> Environmental Gaslighting</span><span>5 min · #05</span></div>
-          <h2><a href="post-05.html">When You Press DOWN and the Lift Goes UP, It&#39;s Not Just a Wiring Fault — It&#39;s Embodied Gaslighting</a></h2>
-          <p>When you press DOWN and the lift goes UP, it&#39;s not just a wiring fault — it&#39;s embodied gaslighting.…</p>
-          <div><strong>Context links →</strong> <a href="post-04.html">When Elevators Glitch Repeatedly, It&#39;s…</a><a href="post-10.html">Black Residue in Your AC Isn&#39;t Just Di…</a><a href="post-08.html">Constant Drilling Upstairs Isn&#39;t Just …</a></div>
-        </article>
-        
-        <article>
-          <div><span> Coercive Systems</span><span>5 min · #06</span></div>
-          <h2><a href="post-06.html">&quot;Under Construction&quot; Isn&#39;t a Status — It&#39;s a Power Dynamic</a></h2>
-          <p>We&#39;ve all encountered it: the website that&#39;s been &quot;coming soon&quot; for three years, the relationship perpetually &quot;working on things,&quot; the workplace refor…</p>
-          <div><strong>Context links →</strong> <a href="post-08.html">Constant Drilling Upstairs Isn&#39;t Just …</a><a href="post-09.html">The Desire for a &quot;Secret Exit&quot; Isn&#39;t A…</a><a href="post-07.html">&quot;White Glove Security&quot; Isn&#39;t Premium P…</a></div>
-        </article>
-        
-        <article>
-          <div><span> Environmental Gaslighting</span><span>5 min · #07</span></div>
-          <h2><a href="post-07.html">&quot;White Glove Security&quot; Isn&#39;t Premium Protection — It&#39;s Aesthetized Control</a></h2>
-          <p>&quot;White glove security&quot; isn&#39;t premium protection — it&#39;s aesthetized control.…</p>
-          <div><strong>Context links →</strong> <a href="post-02.html">Why Venues Ban Cameras – And Why Enfor…</a><a href="post-06.html">&quot;Under Construction&quot; Isn&#39;t a Status — …</a><a href="post-08.html">Constant Drilling Upstairs Isn&#39;t Just …</a></div>
-        </article>
-        
-        <article>
-          <div><span> Environmental Gaslighting</span><span>6 min · #08</span></div>
-          <h2><a href="post-08.html">Constant Drilling Upstairs Isn&#39;t Just Noise — It&#39;s Acoustic Territorial Control</a></h2>
-          <p>Constant drilling upstairs isn&#39;t just noise — it&#39;s acoustic territorial control.…</p>
-          <div><strong>Context links →</strong> <a href="post-10.html">Black Residue in Your AC Isn&#39;t Just Di…</a><a href="post-04.html">When Elevators Glitch Repeatedly, It&#39;s…</a><a href="post-06.html">&quot;Under Construction&quot; Isn&#39;t a Status — …</a></div>
-        </article>
-        
-        <article>
-          <div><span> Coercive Systems</span><span>6 min · #09</span></div>
-          <h2><a href="post-09.html">The Desire for a &quot;Secret Exit&quot; Isn&#39;t About Architecture — It&#39;s About Autonomy Under Threat</a></h2>
-          <p>The desire for a &quot;secret exit&quot; isn&#39;t about architecture — it&#39;s about autonomy under threat.…</p>
-          <div><strong>Context links →</strong> <a href="post-06.html">&quot;Under Construction&quot; Isn&#39;t a Status — …</a><a href="post-07.html">&quot;White Glove Security&quot; Isn&#39;t Premium P…</a><a href="post-08.html">Constant Drilling Upstairs Isn&#39;t Just …</a></div>
-        </article>
-        
-        <article>
-          <div><span> Environmental Gaslighting</span><span>5 min · #10</span></div>
-          <h2><a href="post-10.html">Black Residue in Your AC Isn&#39;t Just Dirt — It&#39;s Embodied Institutional Gaslighting</a></h2>
-          <p>Black residue in your AC isn&#39;t just dirt — it&#39;s embodied institutional gaslighting.…</p>
-          <div><strong>Context links →</strong> <a href="post-08.html">Constant Drilling Upstairs Isn&#39;t Just …</a><a href="post-04.html">When Elevators Glitch Repeatedly, It&#39;s…</a><a href="post-05.html">When You Press DOWN and the Lift Goes …</a></div>
-        </article>
-        
-        <article>
-          <div><span> Environmental Gaslighting</span><span>2 min · #11</span></div>
-          <h2><a href="post-11.html">The Service Elevator Never Arrives — It Simply Declines</a></h2>
-          <p>A freight lift that only answers to staff calls is a voting system built into your commute.…</p>
-          <div><strong>Context links →</strong> <a href="post-17.html">The Intercom That Only Answers In One …</a><a href="post-13.html">Mandatory Fun Is Coercion Wearing a Pa…</a><a href="post-18.html">The Hotel Minibar Is a Contract No One…</a></div>
-        </article>
-        
-        <article>
-          <div><span> Coercive Systems</span><span>2 min · #12</span></div>
-          <h2><a href="post-12.html">The CCTV Light That Never Turns Off Is Performing Surveillance, Not Doing It</a></h2>
-          <p>A blinking red LED costs pennies; belief in being watched costs everyone something else entirely.…</p>
-          <div><strong>Context links →</strong> <a href="post-17.html">The Intercom That Only Answers In One …</a><a href="post-22.html">The Gym Mirror That Flatters Is Also a…</a><a href="post-11.html">The Service Elevator Never Arrives — I…</a></div>
-        </article>
-        
-        <article>
-          <div><span> Coercive Systems</span><span>2 min · #13</span></div>
-          <h2><a href="post-13.html">Mandatory Fun Is Coercion Wearing a Party Hat</a></h2>
-          <p>Leisure that requires attendance is not leisure — it is unpaid emotional labor with snacks.…</p>
-          <div><strong>Context links →</strong> <a href="post-22.html">The Gym Mirror That Flatters Is Also a…</a><a href="post-17.html">The Intercom That Only Answers In One …</a><a href="post-18.html">The Hotel Minibar Is a Contract No One…</a></div>
-        </article>
-        
-        <article>
-          <div><span> Domestic Rights</span><span>2 min · #14</span></div>
-          <h2><a href="post-14.html">Your Landlord&#39;s &quot;Routine Inspection&quot; Is a Consent Question You Were Never Asked</a></h2>
-          <p>Twenty-four hours&#39; notice is not permission; it is a schedule dressed as courtesy.…</p>
-          <div><strong>Context links →</strong> <a href="post-17.html">The Intercom That Only Answers In One …</a><a href="post-18.html">The Hotel Minibar Is a Contract No One…</a><a href="post-11.html">The Service Elevator Never Arrives — I…</a></div>
-        </article>
-        
-        <article>
-          <div><span> Digital Power</span><span>2 min · #15</span></div>
-          <h2><a href="post-15.html">The Loading Screen Lies: Progress Bars as Organizational Gaslighting</a></h2>
-          <p>A bar that reaches ninety percent and waits there is teaching millions of people to distrust their own instruments.…</p>
-          <div><strong>Context links →</strong> <a href="post-17.html">The Intercom That Only Answers In One …</a><a href="post-13.html">Mandatory Fun Is Coercion Wearing a Pa…</a><a href="post-22.html">The Gym Mirror That Flatters Is Also a…</a></div>
-        </article>
-        
-        <article>
-          <div><span> Liminal Spaces</span><span>2 min · #16</span></div>
-          <h2><a href="post-16.html">Open-Plan Offices Aren&#39;t Open — They&#39;re Panoramic Prisons</a></h2>
-          <p>You cannot whisper collaboration into existence, but you can certainly monitor it into compliance.…</p>
-          <div><strong>Context links →</strong> <a href="post-17.html">The Intercom That Only Answers In One …</a><a href="post-22.html">The Gym Mirror That Flatters Is Also a…</a><a href="post-13.html">Mandatory Fun Is Coercion Wearing a Pa…</a></div>
-        </article>
-        
-        <article>
-          <div><span> Coercive Systems</span><span>2 min · #17</span></div>
-          <h2><a href="post-17.html">The Intercom That Only Answers In One Direction</a></h2>
-          <p>A building that lets the lobby speak but never lets residents reply has chosen its audience.…</p>
-          <div><strong>Context links →</strong> <a href="post-11.html">The Service Elevator Never Arrives — I…</a><a href="post-22.html">The Gym Mirror That Flatters Is Also a…</a><a href="post-13.html">Mandatory Fun Is Coercion Wearing a Pa…</a></div>
-        </article>
-        
-        <article>
-          <div><span> Coercive Systems</span><span>2 min · #18</span></div>
-          <h2><a href="post-18.html">The Hotel Minibar Is a Contract No One Reads</a></h2>
-          <p>Snacks priced like surgery are a legal test: did the guest consent, or merely get hungry?…</p>
-          <div><strong>Context links →</strong> <a href="post-17.html">The Intercom That Only Answers In One …</a><a href="post-13.html">Mandatory Fun Is Coercion Wearing a Pa…</a><a href="post-22.html">The Gym Mirror That Flatters Is Also a…</a></div>
-        </article>
-        
-        <article>
-          <div><span> Environmental Gaslighting</span><span>2 min · #19</span></div>
-          <h2><a href="post-19.html">Why Every Emergency Exit Sign Glows Even When Nothing Is Burning</a></h2>
-          <p>Glowing exits sell the feeling of escape; whether the door behind them opens is a separate budget line.…</p>
-          <div><strong>Context links →</strong> <a href="post-13.html">Mandatory Fun Is Coercion Wearing a Pa…</a><a href="post-17.html">The Intercom That Only Answers In One …</a><a href="post-22.html">The Gym Mirror That Flatters Is Also a…</a></div>
-        </article>
-        
-        <article>
-          <div><span> Coercive Systems</span><span>2 min · #20</span></div>
-          <h2><a href="post-20.html">The Group Chat Admin Who Silences Everyone &#39;For Their Own Good&#39;</a></h2>
-          <p>Mute buttons are elevator buttons for conversation — press down, the room goes up.…</p>
-          <div><strong>Context links →</strong> <a href="post-11.html">The Service Elevator Never Arrives — I…</a><a href="post-17.html">The Intercom That Only Answers In One …</a><a href="post-22.html">The Gym Mirror That Flatters Is Also a…</a></div>
-        </article>
-        
-        <article>
-          <div><span> Coercive Systems</span><span>2 min · #21</span></div>
-          <h2><a href="post-21.html">Parking Garages Count Cars Better Than People — And That&#39;s The Problem</a></h2>
-          <p>ANPR gates learned every plate but never learned whose complaint gets answered.…</p>
-          <div><strong>Context links →</strong> <a href="post-17.html">The Intercom That Only Answers In One …</a><a href="post-13.html">Mandatory Fun Is Coercion Wearing a Pa…</a><a href="post-22.html">The Gym Mirror That Flatters Is Also a…</a></div>
-        </article>
-        
-        <article>
-          <div><span> Liminal Spaces</span><span>2 min · #22</span></div>
-          <h2><a href="post-22.html">The Gym Mirror That Flatters Is Also a Compliance Tool</a></h2>
-          <p>Calibrated lighting in weight rooms isn&#39;t vanity — it&#39;s retention engineering wearing a ring light.…</p>
-          <div><strong>Context links →</strong> <a href="post-13.html">Mandatory Fun Is Coercion Wearing a Pa…</a><a href="post-17.html">The Intercom That Only Answers In One …</a><a href="post-18.html">The Hotel Minibar Is a Contract No One…</a></div>
-        </article>
-      </section>
+    <div class="hero-badge">
+      <span class="dot"></span>
+      Archive Active · 22 Files Indexed
     </div>
 
-    <aside>
-      <div>
-        <!-- Fixed: Changed h4 to h2 to fix heading hierarchy -->
-        <h2>Start here — related to #01</h2>
-        <div>
-          <a href="post-02.html"><span>Why Venues Ban Cameras – And Why Enforcement Feels So Pers…</span></a>
-          <a href="post-04.html"><span>When Elevators Glitch Repeatedly, It&#39;s Not Just Maintenanc…</span></a>
-          <a href="post-06.html"><span>&quot;Under Construction&quot; Isn&#39;t a Status — It&#39;s a Power Dynamic…</span></a>
-          <a href="post-08.html"><span>Constant Drilling Upstairs Isn&#39;t Just Noise — It&#39;s Acousti…</span></a>
-        </div>
+    <h1>The <span class="accent">Control</span> Files</h1>
+
+    <p class="hero-description">
+      One cursed HTML archive, split into twenty-two interconnected dispatches on coercive systems, environmental gaslighting, liminal architecture and digital power. Every article links to its semantic neighbours.
+    </p>
+
+    <div class="hero-stats">
+      <span class="stat-pill"><strong>22</strong> files</span>
+      <span class="stat-pill"><strong>88</strong> contextual rail links</span>
+      <span class="stat-pill"><strong>22</strong> in-body contextual links</span>
+      <span class="stat-pill"><strong>13</strong> animated SVG icon rigs</span>
+    </div>
+  </section>
+
+  <!-- MAIN CONTENT -->
+  <div class="main-wrapper">
+    <main>
+      <div class="articles-grid">
+
+        <!-- #01 -->
+        <article class="article-card reveal">
+          <div class="card-header">
+            <span class="card-category cat-language"><span class="cat-dot"></span> Language &amp; Culture</span>
+            <span class="card-meta">10 min · #01</span>
+          </div>
+          <div class="card-body">
+            <h2 class="card-title"><a href="post-01.html">Do You Want to Go to "Ele Hand"? The Thai English Accent, Explained Through a Bangkok Love Story</a></h2>
+            <p class="card-excerpt">A love story, a language lesson, and everything you need to know about the Thai English accent.</p>
+            <div class="card-links">
+              <span class="card-links-label">Context links →</span>
+              <a href="post-02.html" class="context-link">Why Venues Ban Cameras…</a>
+              <a href="post-04.html" class="context-link">When Elevators Glitch…</a>
+              <a href="post-06.html" class="context-link">"Under Construction"…</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- #02 -->
+        <article class="article-card reveal">
+          <div class="card-header">
+            <span class="card-category cat-coercive"><span class="cat-dot"></span> Coercive Systems</span>
+            <span class="card-meta">6 min · #02</span>
+          </div>
+          <div class="card-body">
+            <h2 class="card-title"><a href="post-02.html">Why Venues Ban Cameras – And Why Enforcement Feels So Personal</a></h2>
+            <p class="card-excerpt">Why do venues ban cameras — and why does enforcement feel so personal?</p>
+            <div class="card-links">
+              <span class="card-links-label">Context links →</span>
+              <a href="post-07.html" class="context-link">"White Glove Security"…</a>
+              <a href="post-04.html" class="context-link">When Elevators Glitch…</a>
+              <a href="post-08.html" class="context-link">Constant Drilling…</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- #03 -->
+        <article class="article-card reveal">
+          <div class="card-header">
+            <span class="card-category cat-digital"><span class="cat-dot"></span> Digital Power</span>
+            <span class="card-meta">4 min · #03</span>
+          </div>
+          <div class="card-body">
+            <h2 class="card-title"><a href="post-03.html">Confluence's "Add Content" Controls Aren't Just a Feature — They're an Architecture of Organizational Power</a></h2>
+            <p class="card-excerpt">Confluence's "Add Content" controls aren't just a feature — they're an architecture of organizational power.</p>
+            <div class="card-links">
+              <span class="card-links-label">Context links →</span>
+              <a href="post-07.html" class="context-link">"White Glove Security"…</a>
+              <a href="post-04.html" class="context-link">When Elevators Glitch…</a>
+              <a href="post-02.html" class="context-link">Why Venues Ban Cameras…</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- #04 -->
+        <article class="article-card reveal">
+          <div class="card-header">
+            <span class="card-category cat-environmental"><span class="cat-dot"></span> Environmental Gaslighting</span>
+            <span class="card-meta">5 min · #04</span>
+          </div>
+          <div class="card-body">
+            <h2 class="card-title"><a href="post-04.html">When Elevators Glitch Repeatedly, It's Not Just Maintenance — It's Environmental Control</a></h2>
+            <p class="card-excerpt">When elevators glitch repeatedly, it's not just a maintenance problem — it's an environmental control tactic.</p>
+            <div class="card-links">
+              <span class="card-links-label">Context links →</span>
+              <a href="post-10.html" class="context-link">Black Residue in Your AC…</a>
+              <a href="post-08.html" class="context-link">Constant Drilling…</a>
+              <a href="post-05.html" class="context-link">When You Press DOWN…</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- #05 -->
+        <article class="article-card reveal">
+          <div class="card-header">
+            <span class="card-category cat-environmental"><span class="cat-dot"></span> Environmental Gaslighting</span>
+            <span class="card-meta">5 min · #05</span>
+          </div>
+          <div class="card-body">
+            <h2 class="card-title"><a href="post-05.html">When You Press DOWN and the Lift Goes UP, It's Not Just a Wiring Fault — It's Embodied Gaslighting</a></h2>
+            <p class="card-excerpt">When you press DOWN and the lift goes UP, it's not just a wiring fault — it's embodied gaslighting.</p>
+            <div class="card-links">
+              <span class="card-links-label">Context links →</span>
+              <a href="post-04.html" class="context-link">When Elevators Glitch…</a>
+              <a href="post-10.html" class="context-link">Black Residue in Your AC…</a>
+              <a href="post-08.html" class="context-link">Constant Drilling…</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- #06 -->
+        <article class="article-card reveal">
+          <div class="card-header">
+            <span class="card-category cat-coercive"><span class="cat-dot"></span> Coercive Systems</span>
+            <span class="card-meta">5 min · #06</span>
+          </div>
+          <div class="card-body">
+            <h2 class="card-title"><a href="post-06.html">"Under Construction" Isn't a Status — It's a Power Dynamic</a></h2>
+            <p class="card-excerpt">We've all encountered it: the website that's been "coming soon" for three years, the relationship perpetually "working on things," the workplace reform that never lands.</p>
+            <div class="card-links">
+              <span class="card-links-label">Context links →</span>
+              <a href="post-08.html" class="context-link">Constant Drilling…</a>
+              <a href="post-09.html" class="context-link">The Desire for a "Secret Exit"…</a>
+              <a href="post-07.html" class="context-link">"White Glove Security"…</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- #07 -->
+        <article class="article-card reveal">
+          <div class="card-header">
+            <span class="card-category cat-environmental"><span class="cat-dot"></span> Environmental Gaslighting</span>
+            <span class="card-meta">5 min · #07</span>
+          </div>
+          <div class="card-body">
+            <h2 class="card-title"><a href="post-07.html">"White Glove Security" Isn't Premium Protection — It's Aesthetized Control</a></h2>
+            <p class="card-excerpt">"White glove security" isn't premium protection — it's aesthetized control.</p>
+            <div class="card-links">
+              <span class="card-links-label">Context links →</span>
+              <a href="post-02.html" class="context-link">Why Venues Ban Cameras…</a>
+              <a href="post-06.html" class="context-link">"Under Construction"…</a>
+              <a href="post-08.html" class="context-link">Constant Drilling…</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- #08 -->
+        <article class="article-card reveal">
+          <div class="card-header">
+            <span class="card-category cat-environmental"><span class="cat-dot"></span> Environmental Gaslighting</span>
+            <span class="card-meta">6 min · #08</span>
+          </div>
+          <div class="card-body">
+            <h2 class="card-title"><a href="post-08.html">Constant Drilling Upstairs Isn't Just Noise — It's Acoustic Territorial Control</a></h2>
+            <p class="card-excerpt">Constant drilling upstairs isn't just noise — it's acoustic territorial control.</p>
+            <div class="card-links">
+              <span class="card-links-label">Context links →</span>
+              <a href="post-10.html" class="context-link">Black Residue in Your AC…</a>
+              <a href="post-04.html" class="context-link">When Elevators Glitch…</a>
+              <a href="post-06.html" class="context-link">"Under Construction"…</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- #09 -->
+        <article class="article-card reveal">
+          <div class="card-header">
+            <span class="card-category cat-coercive"><span class="cat-dot"></span> Coercive Systems</span>
+            <span class="card-meta">6 min · #09</span>
+          </div>
+          <div class="card-body">
+            <h2 class="card-title"><a href="post-09.html">The Desire for a "Secret Exit" Isn't About Architecture — It's About Autonomy Under Threat</a></h2>
+            <p class="card-excerpt">The desire for a "secret exit" isn't about architecture — it's about autonomy under threat.</p>
+            <div class="card-links">
+              <span class="card-links-label">Context links →</span>
+              <a href="post-06.html" class="context-link">"Under Construction"…</a>
+              <a href="post-07.html" class="context-link">"White Glove Security"…</a>
+              <a href="post-08.html" class="context-link">Constant Drilling…</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- #10 -->
+        <article class="article-card reveal">
+          <div class="card-header">
+            <span class="card-category cat-environmental"><span class="cat-dot"></span> Environmental Gaslighting</span>
+            <span class="card-meta">5 min · #10</span>
+          </div>
+          <div class="card-body">
+            <h2 class="card-title"><a href="post-10.html">Black Residue in Your AC Isn't Just Dirt — It's Embodied Institutional Gaslighting</a></h2>
+            <p class="card-excerpt">Black residue in your AC isn't just dirt — it's embodied institutional gaslighting.</p>
+            <div class="card-links">
+              <span class="card-links-label">Context links →</span>
+              <a href="post-08.html" class="context-link">Constant Drilling…</a>
+              <a href="post-04.html" class="context-link">When Elevators Glitch…</a>
+              <a href="post-05.html" class="context-link">When You Press DOWN…</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- #11 -->
+        <article class="article-card reveal">
+          <div class="card-header">
+            <span class="card-category cat-environmental"><span class="cat-dot"></span> Environmental Gaslighting</span>
+            <span class="card-meta">2 min · #11</span>
+          </div>
+          <div class="card-body">
+            <h2 class="card-title"><a href="post-11.html">The Service Elevator Never Arrives — It Simply Declines</a></h2>
+            <p class="card-excerpt">A freight lift that only answers to staff calls is a voting system built into your commute.</p>
+            <div class="card-links">
+              <span class="card-links-label">Context links →</span>
+              <a href="post-17.html" class="context-link">The Intercom…</a>
+              <a href="post-13.html" class="context-link">Mandatory Fun…</a>
+              <a href="post-18.html" class="context-link">The Hotel Minibar…</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- #12 -->
+        <article class="article-card reveal">
+          <div class="card-header">
+            <span class="card-category cat-coercive"><span class="cat-dot"></span> Coercive Systems</span>
+            <span class="card-meta">2 min · #12</span>
+          </div>
+          <div class="card-body">
+            <h2 class="card-title"><a href="post-12.html">The CCTV Light That Never Turns Off Is Performing Surveillance, Not Doing It</a></h2>
+            <p class="card-excerpt">A blinking red LED costs pennies; belief in being watched costs everyone something else entirely.</p>
+            <div class="card-links">
+              <span class="card-links-label">Context links →</span>
+              <a href="post-17.html" class="context-link">The Intercom…</a>
+              <a href="post-22.html" class="context-link">The Gym Mirror…</a>
+              <a href="post-11.html" class="context-link">The Service Elevator…</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- #13 -->
+        <article class="article-card reveal">
+          <div class="card-header">
+            <span class="card-category cat-coercive"><span class="cat-dot"></span> Coercive Systems</span>
+            <span class="card-meta">2 min · #13</span>
+          </div>
+          <div class="card-body">
+            <h2 class="card-title"><a href="post-13.html">Mandatory Fun Is Coercion Wearing a Party Hat</a></h2>
+            <p class="card-excerpt">Leisure that requires attendance is not leisure — it is unpaid emotional labor with snacks.</p>
+            <div class="card-links">
+              <span class="card-links-label">Context links →</span>
+              <a href="post-22.html" class="context-link">The Gym Mirror…</a>
+              <a href="post-17.html" class="context-link">The Intercom…</a>
+              <a href="post-18.html" class="context-link">The Hotel Minibar…</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- #14 -->
+        <article class="article-card reveal">
+          <div class="card-header">
+            <span class="card-category cat-domestic"><span class="cat-dot"></span> Domestic Rights</span>
+            <span class="card-meta">2 min · #14</span>
+          </div>
+          <div class="card-body">
+            <h2 class="card-title"><a href="post-14.html">Your Landlord's "Routine Inspection" Is a Consent Question You Were Never Asked</a></h2>
+            <p class="card-excerpt">Twenty-four hours' notice is not permission; it is a schedule dressed as courtesy.</p>
+            <div class="card-links">
+              <span class="card-links-label">Context links →</span>
+              <a href="post-17.html" class="context-link">The Intercom…</a>
+              <a href="post-18.html" class="context-link">The Hotel Minibar…</a>
+              <a href="post-11.html" class="context-link">The Service Elevator…</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- #15 -->
+        <article class="article-card reveal">
+          <div class="card-header">
+            <span class="card-category cat-digital"><span class="cat-dot"></span> Digital Power</span>
+            <span class="card-meta">2 min · #15</span>
+          </div>
+          <div class="card-body">
+            <h2 class="card-title"><a href="post-15.html">The Loading Screen Lies: Progress Bars as Organizational Gaslighting</a></h2>
+            <p class="card-excerpt">A bar that reaches ninety percent and waits there is teaching millions of people to distrust their own instruments.</p>
+            <div class="card-links">
+              <span class="card-links-label">Context links →</span>
+              <a href="post-17.html" class="context-link">The Intercom…</a>
+              <a href="post-13.html" class="context-link">Mandatory Fun…</a>
+              <a href="post-22.html" class="context-link">The Gym Mirror…</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- #16 -->
+        <article class="article-card reveal">
+          <div class="card-header">
+            <span class="card-category cat-liminal"><span class="cat-dot"></span> Liminal Spaces</span>
+            <span class="card-meta">2 min · #16</span>
+          </div>
+          <div class="card-body">
+            <h2 class="card-title"><a href="post-16.html">Open-Plan Offices Aren't Open — They're Panoramic Prisons</a></h2>
+            <p class="card-excerpt">You cannot whisper collaboration into existence, but you can certainly monitor it into compliance.</p>
+            <div class="card-links">
+              <span class="card-links-label">Context links →</span>
+              <a href="post-17.html" class="context-link">The Intercom…</a>
+              <a href="post-22.html" class="context-link">The Gym Mirror…</a>
+              <a href="post-13.html" class="context-link">Mandatory Fun…</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- #17 -->
+        <article class="article-card reveal">
+          <div class="card-header">
+            <span class="card-category cat-coercive"><span class="cat-dot"></span> Coercive Systems</span>
+            <span class="card-meta">2 min · #17</span>
+          </div>
+          <div class="card-body">
+            <h2 class="card-title"><a href="post-17.html">The Intercom That Only Answers In One Direction</a></h2>
+            <p class="card-excerpt">A building that lets the lobby speak but never lets residents reply has chosen its audience.</p>
+            <div class="card-links">
+              <span class="card-links-label">Context links →</span>
+              <a href="post-11.html" class="context-link">The Service Elevator…</a>
+              <a href="post-22.html" class="context-link">The Gym Mirror…</a>
+              <a href="post-13.html" class="context-link">Mandatory Fun…</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- #18 -->
+        <article class="article-card reveal">
+          <div class="card-header">
+            <span class="card-category cat-coercive"><span class="cat-dot"></span> Coercive Systems</span>
+            <span class="card-meta">2 min · #18</span>
+          </div>
+          <div class="card-body">
+            <h2 class="card-title"><a href="post-18.html">The Hotel Minibar Is a Contract No One Reads</a></h2>
+            <p class="card-excerpt">Snacks priced like surgery are a legal test: did the guest consent, or merely get hungry?</p>
+            <div class="card-links">
+              <span class="card-links-label">Context links →</span>
+              <a href="post-17.html" class="context-link">The Intercom…</a>
+              <a href="post-13.html" class="context-link">Mandatory Fun…</a>
+              <a href="post-22.html" class="context-link">The Gym Mirror…</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- #19 -->
+        <article class="article-card reveal">
+          <div class="card-header">
+            <span class="card-category cat-environmental"><span class="cat-dot"></span> Environmental Gaslighting</span>
+            <span class="card-meta">2 min · #19</span>
+          </div>
+          <div class="card-body">
+            <h2 class="card-title"><a href="post-19.html">Why Every Emergency Exit Sign Glows Even When Nothing Is Burning</a></h2>
+            <p class="card-excerpt">Glowing exits sell the feeling of escape; whether the door behind them opens is a separate budget line.</p>
+            <div class="card-links">
+              <span class="card-links-label">Context links →</span>
+              <a href="post-13.html" class="context-link">Mandatory Fun…</a>
+              <a href="post-17.html" class="context-link">The Intercom…</a>
+              <a href="post-22.html" class="context-link">The Gym Mirror…</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- #20 -->
+        <article class="article-card reveal">
+          <div class="card-header">
+            <span class="card-category cat-coercive"><span class="cat-dot"></span> Coercive Systems</span>
+            <span class="card-meta">2 min · #20</span>
+          </div>
+          <div class="card-body">
+            <h2 class="card-title"><a href="post-20.html">The Group Chat Admin Who Silences Everyone 'For Their Own Good'</a></h2>
+            <p class="card-excerpt">Mute buttons are elevator buttons for conversation — press down, the room goes up.</p>
+            <div class="card-links">
+              <span class="card-links-label">Context links →</span>
+              <a href="post-11.html" class="context-link">The Service Elevator…</a>
+              <a href="post-17.html" class="context-link">The Intercom…</a>
+              <a href="post-22.html" class="context-link">The Gym Mirror…</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- #21 -->
+        <article class="article-card reveal">
+          <div class="card-header">
+            <span class="card-category cat-coercive"><span class="cat-dot"></span> Coercive Systems</span>
+            <span class="card-meta">2 min · #21</span>
+          </div>
+          <div class="card-body">
+            <h2 class="card-title"><a href="post-21.html">Parking Garages Count Cars Better Than People — And That's The Problem</a></h2>
+            <p class="card-excerpt">ANPR gates learned every plate but never learned whose complaint gets answered.</p>
+            <div class="card-links">
+              <span class="card-links-label">Context links →</span>
+              <a href="post-17.html" class="context-link">The Intercom…</a>
+              <a href="post-13.html" class="context-link">Mandatory Fun…</a>
+              <a href="post-22.html" class="context-link">The Gym Mirror…</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- #22 -->
+        <article class="article-card reveal">
+          <div class="card-header">
+            <span class="card-category cat-liminal"><span class="cat-dot"></span> Liminal Spaces</span>
+            <span class="card-meta">2 min · #22</span>
+          </div>
+          <div class="card-body">
+            <h2 class="card-title"><a href="post-22.html">The Gym Mirror That Flatters Is Also a Compliance Tool</a></h2>
+            <p class="card-excerpt">Calibrated lighting in weight rooms isn't vanity — it's retention engineering wearing a ring light.</p>
+            <div class="card-links">
+              <span class="card-links-label">Context links →</span>
+              <a href="post-13.html" class="context-link">Mandatory Fun…</a>
+              <a href="post-17.html" class="context-link">The Intercom…</a>
+              <a href="post-18.html" class="context-link">The Hotel Minibar…</a>
+            </div>
+          </div>
+        </article>
+
       </div>
-      
-      <div>
-        <!-- Fixed: Changed h4 to h2 to fix heading hierarchy -->
-        <h2>Full series</h2>
-        <nav>
-          <a href="post-01.html"><span>01</span><span>Do You Want to Go to &quot;Ele Hand&quot;? The Thai En…</span></a>
-          <a href="post-02.html"><span>02</span><span>Why Venues Ban Cameras – And Why Enforcement…</span></a>
-          <a href="post-03.html"><span>03</span><span>Confluence&#39;s &quot;Add Content&quot; Controls Aren&#39;t J…</span></a>
-          <a href="post-04.html"><span>04</span><span>When Elevators Glitch Repeatedly, It&#39;s Not J…</span></a>
-          <a href="post-05.html"><span>05</span><span>When You Press DOWN and the Lift Goes UP, It…</span></a>
-          <a href="post-06.html"><span>06</span><span>&quot;Under Construction&quot; Isn&#39;t a Status — It&#39;s a…</span></a>
-          <a href="post-07.html"><span>07</span><span>&quot;White Glove Security&quot; Isn&#39;t Premium Protect…</span></a>
-          <a href="post-08.html"><span>08</span><span>Constant Drilling Upstairs Isn&#39;t Just Noise …</span></a>
-          <a href="post-09.html"><span>09</span><span>The Desire for a &quot;Secret Exit&quot; Isn&#39;t About A…</span></a>
-          <a href="post-10.html"><span>10</span><span>Black Residue in Your AC Isn&#39;t Just Dirt — I…</span></a>
-          <a href="post-11.html"><span>11</span><span>The Service Elevator Never Arrives — It Simp…</span></a>
-          <a href="post-12.html"><span>12</span><span>The CCTV Light That Never Turns Off Is Perfo…</span></a>
-          <a href="post-13.html"><span>13</span><span>Mandatory Fun Is Coercion Wearing a Party Ha…</span></a>
-          <a href="post-14.html"><span>14</span><span>Your Landlord&#39;s &quot;Routine Inspection&quot; Is a Co…</span></a>
-          <a href="post-15.html"><span>15</span><span>The Loading Screen Lies: Progress Bars as Or…</span></a>
-          <a href="post-16.html"><span>16</span><span>Open-Plan Offices Aren&#39;t Open — They&#39;re Pano…</span></a>
-          <a href="post-17.html"><span>17</span><span>The Intercom That Only Answers In One Direct…</span></a>
-          <a href="post-18.html"><span>18</span><span>The Hotel Minibar Is a Contract No One Reads…</span></a>
-          <a href="post-19.html"><span>19</span><span>Why Every Emergency Exit Sign Glows Even Whe…</span></a>
-          <a href="post-20.html"><span>20</span><span>The Group Chat Admin Who Silences Everyone &#39;…</span></a>
-          <a href="post-21.html"><span>21</span><span>Parking Garages Count Cars Better Than Peopl…</span></a>
-          <a href="post-22.html"><span>22</span><span>The Gym Mirror That Flatters Is Also a Compl…</span></a>
+    </main>
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+      <div class="sidebar-section">
+        <h2 class="sidebar-title">Start here — related to #01</h2>
+        <ul class="related-list">
+          <li><a href="post-02.html"><span class="num">02</span><span>Why Venues Ban Cameras – And Why Enforcement Feels So Personal</span></a></li>
+          <li><a href="post-04.html"><span class="num">04</span><span>When Elevators Glitch Repeatedly, It's Not Just Maintenance</span></a></li>
+          <li><a href="post-06.html"><span class="num">06</span><span>"Under Construction" Isn't a Status — It's a Power Dynamic</span></a></li>
+          <li><a href="post-08.html"><span class="num">08</span><span>Constant Drilling Upstairs Isn't Just Noise</span></a></li>
+        </ul>
+      </div>
+
+      <div class="sidebar-section">
+        <h2 class="sidebar-title">Full series</h2>
+        <nav class="series-nav" aria-label="Full series navigation">
+          <a href="post-01.html"><span class="sn-num">01</span><span>Do You Want to Go to "Ele Hand"?</span></a>
+          <a href="post-02.html"><span class="sn-num">02</span><span>Why Venues Ban Cameras</span></a>
+          <a href="post-03.html"><span class="sn-num">03</span><span>Confluence's "Add Content" Controls</span></a>
+          <a href="post-04.html"><span class="sn-num">04</span><span>When Elevators Glitch Repeatedly</span></a>
+          <a href="post-05.html"><span class="sn-num">05</span><span>Press DOWN, Lift Goes UP</span></a>
+          <a href="post-06.html"><span class="sn-num">06</span><span>"Under Construction" as Power</span></a>
+          <a href="post-07.html"><span class="sn-num">07</span><span>"White Glove Security"</span></a>
+          <a href="post-08.html"><span class="sn-num">08</span><span>Constant Drilling Upstairs</span></a>
+          <a href="post-09.html"><span class="sn-num">09</span><span>The "Secret Exit" Desire</span></a>
+          <a href="post-10.html"><span class="sn-num">10</span><span>Black Residue in Your AC</span></a>
+          <a href="post-11.html"><span class="sn-num">11</span><span>The Service Elevator Declines</span></a>
+          <a href="post-12.html"><span class="sn-num">12</span><span>CCTV Light Performing Surveillance</span></a>
+          <a href="post-13.html"><span class="sn-num">13</span><span>Mandatory Fun as Coercion</span></a>
+          <a href="post-14.html"><span class="sn-num">14</span><span>Landlord's "Routine Inspection"</span></a>
+          <a href="post-15.html"><span class="sn-num">15</span><span>Loading Screen Lies</span></a>
+          <a href="post-16.html"><span class="sn-num">16</span><span>Open-Plan Panoramic Prisons</span></a>
+          <a href="post-17.html"><span class="sn-num">17</span><span>One-Direction Intercom</span></a>
+          <a href="post-18.html"><span class="sn-num">18</span><span>Hotel Minibar Contract</span></a>
+          <a href="post-19.html"><span class="sn-num">19</span><span>Emergency Exit Glow</span></a>
+          <a href="post-20.html"><span class="sn-num">20</span><span>Group Chat Admin Silence</span></a>
+          <a href="post-21.html"><span class="sn-num">21</span><span>Parking Garages Count Cars</span></a>
+          <a href="post-22.html"><span class="sn-num">22</span><span>Gym Mirror Compliance Tool</span></a>
         </nav>
       </div>
     </aside>
-  </main>
+  </div>
 
-  <footer>
-    <span>THE CONTROL FILES · generated by split22.py from &#39;22 blogs in 1 HTML file&#39;</span>
-    <span><a href="post-01.html">Begin reading →</a></span>
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <span class="footer-text">THE CONTROL FILES · generated by split22.py from '22 blogs in 1 HTML file'</span>
+      <a href="post-01.html" class="footer-cta">
+        Begin reading
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="5" y1="12" x2="19" y2="12"></line>
+          <polyline points="12 5 19 12 12 19"></polyline>
+        </svg>
+      </a>
+    </div>
   </footer>
+
+  <!-- Scroll reveal script -->
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry, i) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => entry.target.classList.add('visible'), i * 60);
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  </script>
 
 </body>
 </html>
